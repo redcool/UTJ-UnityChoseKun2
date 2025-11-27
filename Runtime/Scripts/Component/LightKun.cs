@@ -427,7 +427,7 @@ namespace Utj.UnityChoseKun
                         }
                         light.cookieSize = mCookieSize;
 
-                        // ToDo::cookie と flare            
+                        // ToDo::cookie和flare            
                         light.color = mColor.GetColor();
                         light.intensity = mIntensity;
                         light.bounceIntensity = mBounceIntensity;

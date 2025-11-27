@@ -141,7 +141,7 @@ namespace Utj.UnityChoseKun
                 GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(2));
                 EditorGUILayout.BeginHorizontal();
                 var iconContent = new GUIContent(mComponentIcon);
-                foldout = EditorGUILayout.Foldout(foldout, iconContent);                          // Foldout & Icon
+                foldout = EditorGUITools.Foldout(foldout, iconContent);                          // Foldout & Icon
 
                 EditorGUI.BeginChangeCheck();
                 var content = new GUIContent(lightKun.name);

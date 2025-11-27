@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Utj.UnityChoseKun.Engine
 {
     /// <summary>
-    /// SkinnedMeshRendererをSerialize/Deserializeする為のClass
+    /// 用于Serialize/Deserialize SkinnedMeshRenderer的类
     /// </summary>
     [System.Serializable]
     public class SkinnedMeshRendererKun : RendererKun
@@ -64,13 +64,13 @@ namespace Utj.UnityChoseKun.Engine
         
         
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public SkinnedMeshRendererKun():this(null){}
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         /// <param name="component"></param>
         public SkinnedMeshRendererKun(Component component):base(component)
@@ -97,9 +97,9 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// Objectに書き戻す
+        /// 写回Object
         /// </summary>
-        /// <param name="component">SkinMeshRendererオブジェクト</param>
+        /// <param name="component">SkinMeshRenderer对象</param>
         /// <returns></returns>
         public override bool WriteBack(Component component)
         {

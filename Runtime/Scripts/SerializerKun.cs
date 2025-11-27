@@ -9,7 +9,7 @@ namespace Utj.UnityChoseKun
 
 
     /// <summary>
-    /// SerializeのユーティリティーClass
+    /// Serialize的工具类
     /// </summary>
     public static class SerializerKun
     {
@@ -91,11 +91,11 @@ namespace Utj.UnityChoseKun
         
 
         /// <summary>
-        /// オブジェクトの配列をSerializeする
+        /// 序列化对象数组
         /// </summary>
-        /// <typeparam name="T">Objectの型(ISerializeを継承している必要がある)</typeparam>
+        /// <typeparam name="T">Object类型(必须继承ISerialize)</typeparam>
         /// <param name="binaryWriter">BinaryWriter</param>
-        /// <param name="objs">Objectの配列</param>
+        /// <param name="objs">Object数组</param>
         public static void Serialize<T>(BinaryWriter binaryWriter, T[] objs) where T : ISerializerKun
         {
             if (objs == null)
@@ -114,9 +114,9 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// オブジェクトのSerializeを行う
+        /// 序列化对象
         /// </summary>
-        /// <typeparam name="T">オブジェクトの型(ISerializeを継承している必要がある)</typeparam>
+        /// <typeparam name="T">对象类型(必须继承ISerialize)</typeparam>
         /// <param name="binaryWriter"></param>
         /// <param name="obj"></param>
         public static void Serialize<T>(BinaryWriter binaryWriter, T obj) where T : ISerializerKun
@@ -244,10 +244,10 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// オブジェクトのDesirializeを行う
+        /// 反序列化对象
         /// </summary>
         /// <param name="binaryReader">BinaryReader</param>
-        /// <param name="allocater">オブジェクトのアロケーター</param>
+        /// <param name="allocater">对象的分配器</param>
         /// <returns></returns>
         public static ISerializerKun DesirializeObject(BinaryReader binaryReader, Allocater allocater)
         {
@@ -285,12 +285,12 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// オブジェクトの配列をDesirializeを実行する
+        /// 反序列化对象数组
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="binaryReader"></param>
-        /// <param name="allocaters">オブジェクトの配列を確保する為のアロケーター</param>
-        /// <param name="allocater">オブジェクトを確保する為のアロケーター</param>
+        /// <param name="allocaters">用于分配对象数组的分配器</param>
+        /// <param name="allocater">用于分配对象的分配器</param>
         /// <returns></returns>
         public static T[] DesirializeObjects<T>(BinaryReader binaryReader, Allocaters allocaters, Allocater allocater) where T : ISerializerKun , new()
         {

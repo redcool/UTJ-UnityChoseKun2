@@ -113,7 +113,7 @@ namespace Utj.UnityChoseKun
                         universalAdditionalCameraDataKun.renderType = renderType;
                     }
 
-                    projectionFoldOut = EditorGUILayout.Foldout(projectionFoldOut, Styles.projectionSettingsHeaderContent);
+                    projectionFoldOut = EditorGUITools.Foldout(projectionFoldOut, Styles.projectionSettingsHeaderContent);
                                         
                     using (new EditorGUI.IndentLevelScope())
                     {
@@ -121,14 +121,14 @@ namespace Utj.UnityChoseKun
                             DrawProjection();
                     }
 
-                    renderingFoldOut = EditorGUILayout.Foldout(renderingFoldOut, Styles.header);
+                    renderingFoldOut = EditorGUITools.Foldout(renderingFoldOut, Styles.header);
                     using (new EditorGUI.IndentLevelScope())
                     {
                         if (renderingFoldOut)
                             DrawRendering();
                     }
 
-                    stackFoldOut = EditorGUILayout.Foldout(stackFoldOut, "Stack");
+                    stackFoldOut = EditorGUITools.Foldout(stackFoldOut, "Stack");
                     using (new EditorGUI.IndentLevelScope())
                     {
                         if (stackFoldOut)

@@ -115,7 +115,7 @@ namespace Utj.UnityChoseKun
                     }
                     else
                     {
-                        resolutionFoldout = EditorGUILayout.Foldout(resolutionFoldout, "resolutions");
+                        resolutionFoldout = EditorGUITools.Foldout(resolutionFoldout, "resolutions");
                         if (resolutionFoldout)
                         {
                             EditorGUI.indentLevel++;

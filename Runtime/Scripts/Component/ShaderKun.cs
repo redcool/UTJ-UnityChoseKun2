@@ -272,7 +272,7 @@ namespace Utj.UnityChoseKun{
         public ShaderKun(UnityEngine.Object obj):base(obj)
         {
             name = "";            
-            // TODO : プロパティの表示
+            // TODO : 属性的显示
             var shader = obj as Shader;
             if(shader){
                 name = shader.name;

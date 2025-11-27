@@ -3,26 +3,26 @@
     using System.IO;
 
     /// <summary>
-    /// Serialize/Deserializeを行う為のインターフェース
+    /// 用于Serialize/Deserialize的接口
     /// </summary>
     public interface ISerializerKun
     {
 
-        // ルール
-        // メンバーが配列の場合、必ず要素数(4[byte])から始まる
-        // 但し、nullの場合は-1
-        // メンバーがクラスの場合、nullのケースを考慮して配列の場合同様に-1or1から始まる
+        // 规则
+        // 成员为数组时，必须从元素数(4[byte])开始
+        // 但是，null的情况下为-1
+        // 成员为类时，考虑null的情况，与数组同样从-1or1开始
         
 
         /// <summary>
-        /// Objectをシリアライズする
+        /// 序列化Object
         /// </summary>
         /// <param name="binaryWriter">BinaryWriter</param>
         void Serialize(BinaryWriter binaryWriter);
 
 
         /// <summary>
-        /// Objectをデシリアライズする
+        /// 反序列化Object
         /// </summary>
         /// <param name="binaryReader">BinaryReader</param>
         void Deserialize(BinaryReader binaryReader);

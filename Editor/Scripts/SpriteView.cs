@@ -24,11 +24,11 @@ namespace Utj.UnityChoseKun
         {
             if (string.IsNullOrEmpty(m_spriteKun.name))
             {
-                m_spriteFoldout = EditorGUILayout.Foldout(m_spriteFoldout,"UnKnown");
+                m_spriteFoldout = EditorGUITools.Foldout(m_spriteFoldout,"UnKnown");
             } 
             else
             {
-                m_spriteFoldout = EditorGUILayout.Foldout(m_spriteFoldout,m_spriteKun.name);
+                m_spriteFoldout = EditorGUITools.Foldout(m_spriteFoldout,m_spriteKun.name);
             }
             if (m_spriteFoldout)
             {

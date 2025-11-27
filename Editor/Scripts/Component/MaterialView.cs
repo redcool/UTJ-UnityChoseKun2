@@ -72,7 +72,7 @@ namespace Utj.UnityChoseKun
                 using (new EditorGUI.IndentLevelScope())
                 {
                     EditorGUILayout.BeginHorizontal();
-                    foldout = EditorGUILayout.Foldout(foldout, new GUIContent("Shader", ShaderIcon));
+                    foldout = EditorGUITools.Foldout(foldout, new GUIContent("Shader", ShaderIcon));
                     if (ShadersView.shaderNames != null)
                     {
                         var idx = 0;
@@ -234,7 +234,7 @@ namespace Utj.UnityChoseKun
 
             void DrawShaderKeyWords()
             {
-                shaderKeywordFoldout = EditorGUILayout.Foldout(shaderKeywordFoldout, "Shader Key Words");
+                shaderKeywordFoldout = EditorGUITools.Foldout(shaderKeywordFoldout, "Shader Key Words");
                 if (shaderKeywordFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())

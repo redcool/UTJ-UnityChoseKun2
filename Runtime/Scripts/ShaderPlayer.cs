@@ -7,7 +7,7 @@ namespace Utj.UnityChoseKun.Engine
 {
 
     // <summary>
-    // ShaderKunの配列を送る為の構造体
+    // 用于发送ShaderKun数组的结构体
     // </summary>
     [System.Serializable]
     public class ShaderKunPacket : ISerializerKun

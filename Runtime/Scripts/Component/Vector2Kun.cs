@@ -101,7 +101,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Vector2Kunのアロケーター
+        /// Vector2Kun的分配器
         /// </summary>
         /// <returns></returns>
         public static Vector2Kun Allocater()
@@ -111,7 +111,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Vector2Kunの配列を確保する
+        /// 分配Vector2Kun数组
         /// </summary>
         /// <param name="len"></param>
         /// <returns></returns>

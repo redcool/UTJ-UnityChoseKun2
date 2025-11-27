@@ -25,6 +25,7 @@ using System.Runtime.InteropServices;
 
 using UTJ.RemoteConnect;
 using UTJ.RemoteConnect.Editor;
+using Object = UnityEngine.Object;
 
 namespace Utj.UnityChoseKun.Editor
 {    
@@ -159,13 +160,14 @@ namespace Utj.UnityChoseKun.Editor
             onGUILayoutFuncDict.TryGetValue(key,out onGUI);
             if (onGUI != null)
             {
+                UnityChoseKunEditorTools.DrawScriptType(onGUI.Target.GetType());
+
                 m_ScrollPos = EditorGUILayout.BeginScrollView(m_ScrollPos);
                 onGUI();
                 EditorGUILayout.EndScrollView();
-            }                        
+            }
         }
 
-        
         protected override void OnEnable()
         {
             kMsgSendEditorToPlayer = UnityChoseKun.kMsgSendEditorToPlayer;

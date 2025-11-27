@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Utj.UnityChoseKun{
     // <summary>
-    // Androidデバイス固有の設定
+    // Android设备特有的设置
     // </summary>
     [System.Serializable]
     public class AndroidKun : ISerializerKun
@@ -46,7 +46,7 @@ namespace Utj.UnityChoseKun{
 
 
         // <summary>
-        // コンストラクター
+        // 构造函数
         // </summary>
         public AndroidKun(){
             isSustainedPerformanceMode = false;
@@ -70,7 +70,7 @@ namespace Utj.UnityChoseKun{
         }
 
         // <summary>
-        // デストラクター
+        // 析构函数
         // </summary>
         ~AndroidKun()
         {

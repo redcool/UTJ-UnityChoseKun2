@@ -88,7 +88,7 @@ namespace Utj.UnityChoseKun
 
                         materialView.OnGUI();
 
-                        m_IsAdditionalSettings = EditorGUILayout.Foldout(m_IsAdditionalSettings, Styles.AdditionalSettings);
+                        m_IsAdditionalSettings = EditorGUITools.Foldout(m_IsAdditionalSettings, Styles.AdditionalSettings);
                         if (m_IsAdditionalSettings)
                         {
                             using (new EditorGUI.IndentLevelScope())

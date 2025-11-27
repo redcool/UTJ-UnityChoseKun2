@@ -65,7 +65,7 @@ namespace Utj.UnityChoseKun
             {
                 var skinnedMeshRendererKun = rendererKun as SkinnedMeshRendererKun;
 
-                probsFoldout = EditorGUILayout.Foldout(probsFoldout, "Probs");
+                probsFoldout = EditorGUITools.Foldout(probsFoldout, "Probs");
                 if (probsFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -88,7 +88,7 @@ namespace Utj.UnityChoseKun
             {
                 var skinnedMeshRendererKun = rendererKun as SkinnedMeshRendererKun;
 
-                additionalSettingsFoldout = EditorGUILayout.Foldout(additionalSettingsFoldout, "Additional Settings");
+                additionalSettingsFoldout = EditorGUITools.Foldout(additionalSettingsFoldout, "Additional Settings");
                 if (additionalSettingsFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())

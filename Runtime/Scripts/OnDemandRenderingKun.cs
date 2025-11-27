@@ -6,20 +6,20 @@ using UnityEngine.Rendering;
 namespace Utj.UnityChoseKun
 {
     /// <summary>
-    /// OnDemandRenderingをSerialize/Deserializeする為のClass
+    /// 用于Serialize/Deserialize OnDemandRendering的类
     /// </summary>
     [System.Serializable]
     public class OnDemandRenderingKun : ISerializerKun
     {
         
-        // メンバー変数        
+        // 成员变量        
         [SerializeField] int mEffectiveRenderFrameRate;
         [SerializeField] int mRenderFrameInterval;
         [SerializeField] bool mWillCurrentFrameRender;
         [SerializeField] bool mIsDirty;
 
 
-        // プロパティ
+        // 属性
 
         public int effectiveRenderFrameRate
         {
@@ -46,18 +46,18 @@ namespace Utj.UnityChoseKun
         }
 
 
-        // メンバー関数の定義
+        // 成员函数的定义
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public OnDemandRenderingKun() : this(false) { }
         
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="isSet">true:値を設定する</param>
+        /// <param name="isSet">true:设置值</param>
         public OnDemandRenderingKun(bool isSet):base()
         {
             if (isSet)
@@ -72,7 +72,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// 値を書き戻す
+        /// 写回值
         /// </summary>
         public void WriteBack()
         {
@@ -89,7 +89,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Serializeを行う
+        /// 执行Serialize
         /// </summary>
         /// <param name="binaryWriter"></param>
         public virtual void Serialize(BinaryWriter binaryWriter)
@@ -102,7 +102,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Deserializeを行う
+        /// 执行Deserialize
         /// </summary>
         /// <param name="binaryReader"></param>
         public virtual void Deserialize(BinaryReader binaryReader)

@@ -12,7 +12,7 @@ namespace Utj.UnityChoseKun.Editor
       
 
     /// <summary>
-    /// Hierarchyを表示する為のClass
+    /// 用于显示Hierarchy的类
     /// Programed by Katsumasa.Kimura
     /// https://docs.unity3d.com/ja/2019.4/Manual/TreeViewAPI.html
     /// https://docs.unity3d.com/ja/2019.4/ScriptReference/IMGUI.Controls.TreeView.html

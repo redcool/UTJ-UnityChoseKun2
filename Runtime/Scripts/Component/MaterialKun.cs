@@ -436,7 +436,7 @@ namespace Utj.UnityChoseKun.Engine
             }
         }
 
-        // TODO : Materialのwrite back
+        // TODO : Material的写回
         public override bool WriteBack(Object obj)
         {
             var result = base.WriteBack(obj);

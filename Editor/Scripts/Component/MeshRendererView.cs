@@ -53,7 +53,7 @@ namespace Utj.UnityChoseKun
             {
                 var meshRendererKun = rendererKun as MeshRendererKun;
 
-                probsFoldout = EditorGUILayout.Foldout(probsFoldout, "Probs");
+                probsFoldout = EditorGUITools.Foldout(probsFoldout, "Probs");
                 if (probsFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -75,7 +75,7 @@ namespace Utj.UnityChoseKun
             public void DrawAdditionalSettings(RendererKun rendererKun)
             {
                 var meshRendererKun = rendererKun as MeshRendererKun;
-                additionalSettingsFoldout = EditorGUILayout.Foldout(additionalSettingsFoldout, "Additional Settings");
+                additionalSettingsFoldout = EditorGUITools.Foldout(additionalSettingsFoldout, "Additional Settings");
                 if (additionalSettingsFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())

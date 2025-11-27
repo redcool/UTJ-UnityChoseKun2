@@ -24,15 +24,15 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public RigidbodyKun() : this(null) { }
         
         
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="component">Rigidbodyオブジェクト</param>
+        /// <param name="component">Rigidbody对象</param>
         public RigidbodyKun(Component component):base(component)
         {
             componentKunType = ComponentKunType.Rigidbody;

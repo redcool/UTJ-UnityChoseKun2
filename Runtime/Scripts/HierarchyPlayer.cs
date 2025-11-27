@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 namespace Utj.UnityChoseKun.Engine
 {
     /// <summary>
-    /// HierarchyPlayerで使用するMessageデータ
+    /// HierarchyPlayer使用的Message数据
     /// </summary>
     [System.Serializable]
     public class HierarchyMessage : ISerializerKun
@@ -244,10 +244,10 @@ namespace Utj.UnityChoseKun.Engine
 
        
         /// <summary>
-        /// instanceIDをキーにしてScene内のGameObjectを検索する
+        /// 以instanceID为键在Scene内搜索GameObject
         /// </summary>
         /// <param name="instanceID">instanceID</param>
-        /// <returns>instanceIDが一致するGameObject</returns>
+        /// <returns>instanceID匹配的GameObject</returns>
         public static GameObject FindGameObjectInScene(int instanceID)
         {
             for(var i = 0; i < SceneManager.sceneCount; i++)

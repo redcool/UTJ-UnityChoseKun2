@@ -186,7 +186,7 @@ namespace Utj.UnityChoseKun
             {
                 GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(1));
                 EditorGUILayout.BeginHorizontal();
-                foldout = EditorGUILayout.Foldout(foldout, Styles.cameraFoldout);
+                foldout = EditorGUITools.Foldout(foldout, Styles.cameraFoldout);
 
                 EditorGUI.BeginChangeCheck();
                 var enabled = EditorGUILayout.ToggleLeft("Camera", cameraKun.enabled);

@@ -82,7 +82,7 @@ namespace Utj.UnityChoseKun
 
             protected virtual void DrawMaterials(RendererKun rendererKun)
             {
-                materialsFoldout = EditorGUILayout.Foldout(materialsFoldout, "Materials");
+                materialsFoldout = EditorGUITools.Foldout(materialsFoldout, "Materials");
                 if (materialsFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -106,7 +106,7 @@ namespace Utj.UnityChoseKun
 
             protected virtual void DrawLighting(RendererKun rendererKun)
             {
-                lightingFoldout = EditorGUILayout.Foldout(lightingFoldout, "Lighting");
+                lightingFoldout = EditorGUITools.Foldout(lightingFoldout, "Lighting");
                 if (lightingFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -145,7 +145,7 @@ namespace Utj.UnityChoseKun
                 GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(2));
                 EditorGUILayout.BeginHorizontal();
                 var iconContent = new GUIContent(mComponentIcon);
-                foldout = EditorGUILayout.Foldout(foldout, iconContent);                          // Foldout & Icon
+                foldout = EditorGUITools.Foldout(foldout, iconContent);                          // Foldout & Icon
 
                 EditorGUI.BeginChangeCheck();
                 var content = new GUIContent(rendererKun.name);

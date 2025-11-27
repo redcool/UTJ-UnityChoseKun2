@@ -75,7 +75,7 @@ namespace Utj.UnityChoseKun
                 EditorGUILayout.EndHorizontal();
               
 
-                m_foldout = EditorGUILayout.Foldout(m_foldout, "Total Object RuntimeMemorySize: "+ Byte2String(m_totalRuntimeMemorySizeLong));
+                m_foldout = EditorGUITools.Foldout(m_foldout, "Total Object RuntimeMemorySize: "+ Byte2String(m_totalRuntimeMemorySizeLong));
                 if (m_foldout)
                 {
                     EditorGUI.indentLevel++;

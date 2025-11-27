@@ -135,7 +135,7 @@ namespace Utj.UnityChoseKun.Engine
 
         public void MoveGameObjectToScene(GameObjectKun gameObjectKun,SceneKun sceneKun)
         {            
-            // RootGameObjectの場合、元のSceneから削除する
+            // 如果是RootGameObject，从原Scene中删除
             for (var i = 0; i < sceneKuns.Length; i++)
             {
                 var list = new List<GameObjectKun>(sceneKuns[i].gameObjectKuns);
@@ -147,7 +147,7 @@ namespace Utj.UnityChoseKun.Engine
                 }                
             }
 
-            // 移動先のSceneへ追加
+            // 添加到目标Scene
             {
                 var list = new List<GameObjectKun>(sceneKun.gameObjectKuns);
                 list.Add(gameObjectKun);

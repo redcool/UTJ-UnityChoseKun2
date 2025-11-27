@@ -24,15 +24,15 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public PhysicMaterialKun() : this(null) { }
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="physicMaterial">PhysicMaterialオブジェクト</param>
+        /// <param name="physicMaterial">PhysicMaterial对象</param>
 #if UNITY_6000_0_OR_NEWER
         public PhysicMaterialKun(PhysicsMaterial physicMaterial):base(physicMaterial)
 #else

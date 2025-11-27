@@ -96,7 +96,7 @@ namespace Utj.UnityChoseKun
                 {
                     content.text = textureKun.name;
                 }
-                textureFoldout = EditorGUILayout.Foldout(textureFoldout, content);
+                textureFoldout = EditorGUITools.Foldout(textureFoldout, content);
                 if (textureFoldout)
                 {
                     using (new EditorGUI.IndentLevelScope())

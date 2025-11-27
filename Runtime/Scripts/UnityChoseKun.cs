@@ -5,7 +5,7 @@
 #endif
 
 /// <summary>
-/// いずれかのSERIALIZATIONを選択する
+/// 选择任一SERIALIZATION
 /// </summary>
 #define SERIALIZATION_BINARFORMATTER
 //#define SERIALIZATION_JSON
@@ -22,7 +22,7 @@ namespace Utj.UnityChoseKun
 
 
     /// <summary>
-    /// UnityChoseKunの共通パケット
+    /// UnityChoseKun的通用数据包
     /// </summary>
     [System.Serializable]    
     public class UnityChoseKunMessageData
@@ -83,19 +83,19 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// From Editor to Playerで使用するPlayerConnec用のGUID
+        /// 从Editor到Player使用的PlayerConnect用GUID
         /// </summary>        
         public static readonly System.Guid kMsgSendEditorToPlayer = new System.Guid("a819fa0823134ed9bfc6cf17eac8a232");
 
         /// <summary>
-        /// From Player to Editorで使用するPlayerConnect用のGUID
+        /// 从Player到Editor使用的PlayerConnect用GUID
         /// </summary>
         public static readonly System.Guid kMsgSendPlayerToEditor = new System.Guid("5b9b9d37e331433cbd31c6cf8093d8da");
 
 
 
         /// <summary>
-        /// ClassIDからSystem.Typeの文字列を取得
+        /// 从ClassID获取System.Type的字符串
         /// https://docs.unity3d.com/ja/2019.4/Manual/ClassIDReference.html 
         /// </summary>
         public static Dictionary<int, string> mClassID2TypeDict = new Dictionary<int, string>(){
@@ -422,7 +422,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// System TypeからClassIDを取得する
+        /// 从System Type获取ClassID
         /// </summary>
         /// <param name="systemType">System Type</param>
         /// <returns>Class ID</returns>
@@ -442,7 +442,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Class IDからSystem Typeを取得する
+        /// 从Class ID获取System Type
         /// </summary>
         /// <param name="classID">Class ID</param>
         /// <returns>System Type</returns>
@@ -454,11 +454,11 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// Objectデータをbyteの配列へ変換する
+        /// 将Object数据转换为字节数组
         /// </summary>
-        /// <typeparam name="T">変換するObjectの型</typeparam>
-        /// <param name="src">変換するObject</param>
-        /// <param name="dst">byte型の配列</param>
+        /// <typeparam name="T">要转换的Object类型</typeparam>
+        /// <param name="src">要转换的Object</param>
+        /// <param name="dst">字节数组</param>
         public static void ObjectToBytes<T>(T src, out byte[] dst)
 #if SERIALIZATION_BINARFORMATTER
         {
@@ -516,11 +516,11 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// byte配列からObjectへ変換する
+        /// 从字节数组转换为Object
         /// </summary>
-        /// <typeparam name="T">変換後のオブジェクトの型</typeparam>
-        /// <param name="src">byte配列</param>
-        /// <param name="dst">変換されたオブジェクト</param>
+        /// <typeparam name="T">转换后的对象类型</typeparam>
+        /// <param name="src">字节数组</param>
+        /// <param name="dst">转换后的对象</param>
         public static void BytesToObject<T>(byte[] src, out T dst)
 #if SERIALIZATION_BINARFORMATTER
         {
@@ -556,11 +556,11 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// byte配列をオブジェクトに変換する
+        /// 将字节数组转换为对象
         /// </summary>
-        /// <typeparam name="T">変換後のオブジェクトの型</typeparam>
-        /// <param name="src">byte配列</param>
-        /// <returns>変換されたオブジェクト</returns>
+        /// <typeparam name="T">转换后的对象类型</typeparam>
+        /// <param name="src">字节数组</param>
+        /// <returns>转换后的对象</returns>
         public static T GetObject<T>(byte[] src)
 #if SERIALIZATION_BINARFORMATTER
         {            

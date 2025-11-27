@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 namespace Utj.UnityChoseKun.Engine
 {           
     /// <summary>
-    /// Transformをシリアライズ・デシリアライズする為のClass
+    /// 用于序列化/反序列化Transform的类
     /// </summary>
     [System.Serializable]
     public class TransformKun : ComponentKun{
@@ -56,13 +56,13 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public TransformKun():this(null){}
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         /// <param name="component"></param>
         public TransformKun(Component component):base(component){
@@ -85,7 +85,7 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// 書き戻し
+        /// 写回
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>

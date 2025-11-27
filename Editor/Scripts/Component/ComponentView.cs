@@ -140,7 +140,7 @@ namespace  Utj.UnityChoseKun.Editor
             GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(2));
             EditorGUILayout.BeginHorizontal();                        
             var iconContent = new GUIContent(mComponentIcon);
-            foldout = EditorGUILayout.Foldout(foldout, iconContent);
+            foldout = EditorGUITools.Foldout(foldout, iconContent);
                          
             EditorGUI.BeginChangeCheck();
             var rect = EditorGUILayout.GetControlRect();

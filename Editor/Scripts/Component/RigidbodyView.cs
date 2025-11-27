@@ -61,7 +61,7 @@ namespace Utj.UnityChoseKun
             public override bool OnGUI()
             {
                 GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(2));
-                m_rigidbodyFoldout = EditorGUILayout.Foldout(m_rigidbodyFoldout, Styles.Rigidbody);
+                m_rigidbodyFoldout = EditorGUITools.Foldout(m_rigidbodyFoldout, Styles.Rigidbody);
                 GUILayout.Box("", GUILayout.ExpandWidth(true), GUILayout.Height(2));
                 if (m_rigidbodyFoldout)
                 {
@@ -79,7 +79,7 @@ namespace Utj.UnityChoseKun
                         rigidbodyKun.isKinematic = EditorGUILayout.Toggle(Styles.IsKinematic, rigidbodyKun.isKinematic);
                         rigidbodyKun.interpolation = (RigidbodyInterpolation)EditorGUILayout.EnumPopup(Styles.Interpolate, rigidbodyKun.interpolation);
                         rigidbodyKun.collisionDetectionMode = (CollisionDetectionMode)EditorGUILayout.EnumPopup(Styles.CollisionDetectionMode, rigidbodyKun.collisionDetectionMode);
-                        m_foldoutConstraints = EditorGUILayout.Foldout(m_foldoutConstraints, Styles.Constraints);
+                        m_foldoutConstraints = EditorGUITools.Foldout(m_foldoutConstraints, Styles.Constraints);
                         if (m_foldoutConstraints)
                         {
                             using (new EditorGUI.IndentLevelScope())

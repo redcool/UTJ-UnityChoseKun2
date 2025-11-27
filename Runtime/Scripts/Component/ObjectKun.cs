@@ -86,7 +86,7 @@ namespace Utj.UnityChoseKun{
         /// </summary>
         public ObjectKun():this(null)
         {
-            // TODO:int型のInstanceIDの求め方確認
+            // TODO:int型InstanceID的获取方法确认
             byte[] gb = System.Guid.NewGuid().ToByteArray();
             instanceID = System.BitConverter.ToInt32(gb,0);            
         }

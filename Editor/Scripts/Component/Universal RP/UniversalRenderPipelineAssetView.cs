@@ -96,7 +96,7 @@ namespace Utj.UnityChoseKun
                         }
 
                         var label = string.Format("{0} (Universal Render Pipeline Asset)", universalRenderPipelineAssetKun.name);
-                        mDrawFoldout = EditorGUILayout.Foldout(mDrawFoldout, label);
+                        mDrawFoldout = EditorGUITools.Foldout(mDrawFoldout, label,true);
                         if (mDrawFoldout)
                         {
                             bool dirty = false;
@@ -116,7 +116,7 @@ namespace Utj.UnityChoseKun
 
                     bool DrawRendering(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
-                        mRenderingFoldout = EditorGUILayout.Foldout(mRenderingFoldout, Styles.Rendering);
+                        mRenderingFoldout = EditorGUITools.Foldout(mRenderingFoldout, Styles.Rendering);
                         if (mRenderingFoldout)
                         {
                             EditorGUI.BeginChangeCheck();
@@ -131,9 +131,9 @@ namespace Utj.UnityChoseKun
                                 var label = string.Format("{0}:{1} (Universal Renderer Data)", i, universalRenderPipelineAssetKun.rendererDataList[i].name);
                                 if (i == universalRenderPipelineAssetKun.defaultRendererIndex)
                                 {
-                                    label += " [Default]";
+                                    label += " <color=#008800ff><b>[Default]</b></color>";
                                 }
-                                EditorGUILayout.LabelField(label);
+                                EditorGUILayout.LabelField(label,EditorGUITools.RichTextLabel);
                             }
                             EditorGUILayout.EndVertical();
                             EditorGUI.indentLevel--;
@@ -158,7 +158,7 @@ namespace Utj.UnityChoseKun
 
                     bool DrawQuality(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
-                        mQualityFoldout = EditorGUILayout.Foldout(mQualityFoldout, Styles.Quality);
+                        mQualityFoldout = EditorGUITools.Foldout(mQualityFoldout, Styles.Quality);
                         if (mQualityFoldout)
                         {
                             EditorGUI.BeginChangeCheck();
@@ -180,7 +180,7 @@ namespace Utj.UnityChoseKun
 
                     bool DrawLighting(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
-                        mLightFoldout = EditorGUILayout.Foldout(mLightFoldout, Styles.Lighting);
+                        mLightFoldout = EditorGUITools.Foldout(mLightFoldout, Styles.Lighting);
                         if (mLightFoldout)
                         {
                             EditorGUI.BeginChangeCheck();
@@ -266,7 +266,7 @@ namespace Utj.UnityChoseKun
 
                     bool DrawShadow(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
-                        mShadowFoldout = EditorGUILayout.Foldout(mShadowFoldout, Styles.Shadows);
+                        mShadowFoldout = EditorGUITools.Foldout(mShadowFoldout, Styles.Shadows);
                         if (mShadowFoldout)
                         {
                             EditorGUI.BeginChangeCheck();
@@ -313,7 +313,7 @@ namespace Utj.UnityChoseKun
 
                     bool DrawPostProcessing(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
-                        mPostProcessingFoldout = EditorGUILayout.Foldout(mPostProcessingFoldout, Styles.PostProcessing);
+                        mPostProcessingFoldout = EditorGUITools.Foldout(mPostProcessingFoldout, Styles.PostProcessing);
                         if (mPostProcessingFoldout)
                         {
                             EditorGUI.indentLevel++;

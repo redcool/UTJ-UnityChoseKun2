@@ -29,7 +29,7 @@ using Rendering.Universal;
 
 
     /// <summary>
-    /// UnityChoseKunのPlayer側Class
+    /// UnityChoseKun的Player端类
     /// </summary>
     public class UnityChoseKunPlayer : UTJ.RemoteConnect.Player
     {              
@@ -152,7 +152,7 @@ using Rendering.Universal;
 
         
         /// <summary>
-        /// PlayerからEditorへの送信
+        /// 从Player向Editor发送
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="id"></param>

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Utj.UnityChoseKun.Engine
 {    
     /// <summary>
-    /// QualitySettingsPlayerのClass
+    /// QualitySettingsPlayer的类
     /// </summary>
     public static class QualitySettingsPlayer
     {

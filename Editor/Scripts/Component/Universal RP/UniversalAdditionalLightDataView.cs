@@ -169,7 +169,7 @@ namespace Utj.UnityChoseKun
 
             void DrawGeneralContentInternal(LightView lightView)
             {
-                m_foldOutGeneral = EditorGUILayout.Foldout(m_foldOutGeneral, "General");
+                m_foldOutGeneral = EditorGUITools.Foldout(m_foldOutGeneral, "General");
                 if (m_foldOutGeneral)
                 {
                     EditorGUI.indentLevel += 1;
@@ -181,7 +181,7 @@ namespace Utj.UnityChoseKun
 
             void DrawShapeContentInternal(LightView lightView)
             {
-                m_foldOutShape = EditorGUILayout.Foldout(m_foldOutShape, "Shape");
+                m_foldOutShape = EditorGUITools.Foldout(m_foldOutShape, "Shape");
 
                 var isAreaLightType = lightView.lightKun.type == LightType.Rectangle || lightView.lightKun.type == LightType.Disc;
                 var selectedShape = isAreaLightType ? (int)lightView.lightKun.type : (int)AreaLightShape.None;                                
@@ -195,7 +195,7 @@ namespace Utj.UnityChoseKun
                     {
                         using (new EditorGUI.IndentLevelScope())
                         {
-                            // AreaTypeÇÃShapeÇÕBaked OnlyÇÃà◊ïœçXïââ◊
+                            // AreaTypeÔøΩÔøΩShapeÔøΩÔøΩBaked OnlyÔøΩÃà◊ïœçXÔøΩÔøΩÔøΩÔøΩ
                             EditorGUILayout.IntPopup(Styles.AreaLightShapeContent, selectedShape, Styles.AreaLightShapeTitles, Styles.AreaLightShapeValues);
                             using (new EditorGUI.IndentLevelScope())
                             {
@@ -224,7 +224,7 @@ namespace Utj.UnityChoseKun
 
             void DrawEmissionContentInternal(LightView lightView)
             {
-                m_foldOutEmission = EditorGUILayout.Foldout(m_foldOutEmission, "Emission");
+                m_foldOutEmission = EditorGUITools.Foldout(m_foldOutEmission, "Emission");
                 if (m_foldOutEmission)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -244,7 +244,7 @@ namespace Utj.UnityChoseKun
 
             void DrawRenderingContentInternal(LightView lightView)
             {
-                m_foldOutRendering = EditorGUILayout.Foldout(m_foldOutRendering, "Rendering");
+                m_foldOutRendering = EditorGUITools.Foldout(m_foldOutRendering, "Rendering");
                 if (m_foldOutRendering)
                 {
                     using (new EditorGUI.IndentLevelScope())
@@ -259,7 +259,7 @@ namespace Utj.UnityChoseKun
 
             void DrawShadowContent(LightView lightView)
             {
-                m_foldOutShadow = EditorGUILayout.Foldout(m_foldOutShadow,"Shadow");
+                m_foldOutShadow = EditorGUITools.Foldout(m_foldOutShadow,"Shadow");
                 if (m_foldOutShadow == false)
                 {
                     return;
@@ -414,7 +414,7 @@ namespace Utj.UnityChoseKun
             void DrawLightCookieContent(LightView lightView)
             {
 
-                m_foldOutCookie = EditorGUILayout.Foldout(m_foldOutCookie,Styles.lightCookieHeader);
+                m_foldOutCookie = EditorGUITools.Foldout(m_foldOutCookie,Styles.lightCookieHeader);
                 if(m_foldOutCookie == false)
                 {
                     return;
