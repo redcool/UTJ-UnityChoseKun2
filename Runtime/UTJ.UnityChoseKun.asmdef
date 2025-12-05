@@ -1,7 +1,10 @@
 {
     "name": "UTJ.UnityChoseKun",
+    "rootNamespace": "",
     "references": [
-        "GUID:0e80379a029da2e44b192fcaf767e3af"
+        "GUID:0e80379a029da2e44b192fcaf767e3af",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

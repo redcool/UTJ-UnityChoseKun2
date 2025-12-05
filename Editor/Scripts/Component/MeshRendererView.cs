@@ -9,7 +9,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// MeshRendererを描画する為のClass
+        /// 用于绘制MeshRenderer的Class
         /// Prpgramed by Katsumasamura
         /// </summary>
         [System.Serializable]

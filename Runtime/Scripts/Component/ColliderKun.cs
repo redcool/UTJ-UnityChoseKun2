@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Utj.UnityChoseKun.Engine
 {
     /// <summary>
-    /// Colliderオブジェクトをシリアライズ/デシリアライズする為のクラス
+    /// 用于序列化/反序列化Collider对象的类
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
@@ -25,15 +25,15 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public ColliderKun() : this(null) { m_bounds = new BoundsKun(); material = ""; }
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="collider">元となるColliderオブジェクト</param>
+        /// <param name="collider">原始Collider对象</param>
         public ColliderKun(Component component) : base(component)
         {
             componentKunType = ComponentKunType.Collider;
@@ -54,7 +54,7 @@ namespace Utj.UnityChoseKun.Engine
         }
 
         /// <summary>
-        /// ColliderKunの内容を書き戻す
+        /// 将ColliderKun的内容写回
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>
@@ -146,7 +146,7 @@ namespace Utj.UnityChoseKun.Engine
 
 
     /// <summary>
-    /// CapsuleColliderをシリアライズ・デシリアライズする為のClass
+    /// 用于序列化/反序列化CapsuleCollider的Class
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
@@ -166,15 +166,15 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public CapsuleColliderKun() : this(null) { }                
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="collider">元となるCapuselCollider</param>
+        /// <param name="collider">原始CapsuleCollider</param>
         public CapsuleColliderKun(Component component) : base(component)
         {
             componentKunType = ComponentKunType.CapsuleCollider;
@@ -196,9 +196,9 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// CapuselColliderKunの内容をCapuselColliderへ書き戻す
+        /// 将CapsuleColliderKun的内容写回到CapsuleCollider
         /// </summary>
-        /// <param name="component">CapuselColliderオブジェクト</param>
+        /// <param name="component">CapsuleCollider对象</param>
         /// <returns></returns>
         public override bool WriteBack(Component component)
         {
@@ -288,7 +288,7 @@ namespace Utj.UnityChoseKun.Engine
 
 
     /// <summary>
-    /// MeshColliderをシリアライズ・デシリアライズする為のClass
+    /// 用于序列化/反序列化MeshCollider的Class
     /// </summary>
     [System.Serializable]
     public class MeshColliderKun : ColliderKun
@@ -299,14 +299,14 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public MeshColliderKun() : this(null) { }
         
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="collider">MeshColliderオブジェクト</param>
+        /// <param name="collider">MeshCollider对象</param>
         public MeshColliderKun(Component component) : base(component)
         {
             componentKunType = ComponentKunType.MeshCollider;            
@@ -323,7 +323,7 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// MeshColliderKunの内容をMeshColliderへ書き戻す
+        /// 将MeshColliderKun的内容写回到MeshCollider
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>

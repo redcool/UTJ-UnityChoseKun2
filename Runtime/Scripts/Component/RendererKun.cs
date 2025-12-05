@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Utj.UnityChoseKun.Engine
 {
-    // <summary> Rendererをシリアライズする為のClass </summary>
+    // <summary> 用于序列化Renderer的Class </summary>
     [System.Serializable]
     public class RendererKun : ComponentKun
     {
         //
-        // メンバーの変数の定義
+        // 成员变量的定义
         //
 #if UNITY_2019_1_OR_NEWER
         [SerializeField] bool m_forceRenderingOff ;
@@ -195,7 +195,7 @@ namespace Utj.UnityChoseKun.Engine
         }
 
         //
-        // メンバー関数の定義
+        // 成员函数的定义
         //
 
 
@@ -314,7 +314,7 @@ namespace Utj.UnityChoseKun.Engine
                     renderer.sortingOrder = sortingOrder;                    
                 }
                 //
-                // RendererはDirtyでは無いがMaterialが書き換わっているケースもある
+                // Renderer可能不是Dirty，但Material可能已被修改的情况
                 //
                 for(var i = 0; i < materials.Length; i++){
                     var materialKun = materials[i];

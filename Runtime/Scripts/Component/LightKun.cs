@@ -138,7 +138,7 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// LightをSerialize/Desrializeする為のClass
+        /// 用于Serialize/Deserialize Light的类
         /// Programed by Katsumasa.Kimura
         /// </summary>
         [System.Serializable]

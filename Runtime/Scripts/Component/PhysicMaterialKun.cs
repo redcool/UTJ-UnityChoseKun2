@@ -51,9 +51,9 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// 内容を書き戻す
+        /// 将内容写回
         /// </summary>
-        /// <param name="obj">PhysicMaterialオブジェクト</param>
+        /// <param name="obj">PhysicMaterial对象</param>
         /// <returns></returns>
         public override bool WriteBack(Object obj)
         {

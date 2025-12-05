@@ -7,7 +7,7 @@ using UnityEngine;
 namespace  Utj.UnityChoseKun.Engine
 {
     // <summary>
-    // CameraをPlayer/Editorの両方でシリアライズ/デシリアライズする為のClass
+    // 用于在Player/Editor双方序列化/反序列化Camera的Class
     // </summary>
     [System.Serializable]
     public class CameraKun : BehaviourKun {
@@ -25,7 +25,7 @@ namespace  Utj.UnityChoseKun.Engine
             new Vector2(70.41f, 52.63f), // 70mm IMAX
         };
 
-        // メンバー変数の定義        
+        // 成员变量的定义        
         CameraClearFlags m_clearFlags;
         ColorKun m_backgroundColor;
         int m_cullingMask;
@@ -36,7 +36,7 @@ namespace  Utj.UnityChoseKun.Engine
         float m_fieldOfView;
         bool m_usePhysicalProperties;
         
-        // 物理カメラの設定
+        // 物理相机的设置
         float m_focalLength;        
         Vector2Kun m_sensorSize;
         Vector2Kun m_lensShift;
@@ -229,15 +229,15 @@ namespace  Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public CameraKun(): this(null){}
         
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="component">Cameraオブジェクト</param>
+        /// <param name="component">Camera对象</param>
         public CameraKun(Component component):base(component)
         {                                    
             componentKunType = ComponentKunType.Camera;

@@ -7,13 +7,13 @@ namespace Utj.UnityChoseKun.Engine
 {
     
     // <summary>
-    // AnimatorをSerialize/Deserializeする為のクラス
+    // 用于序列化/反序列化Animator的类
     // Programed By Katsumasa.Kimura
     // </summary>
     [System.Serializable]
     public class AnimatorKun : BehaviourKun
     {            
-        // 変数の定義
+        // 变量的定义
         [SerializeField] string mRuntimeAnimatorController;
         [SerializeField] string mAvatar;
         [SerializeField] bool mApplyRootMotion;
@@ -53,14 +53,14 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public AnimatorKun() : this(null) { }
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="component">Animatorオブジェクト</param>
+        /// <param name="component">Animator对象</param>
         public AnimatorKun(Component component):base(component)
         {            
             componentKunType = ComponentKunType.Animator;
@@ -90,7 +90,7 @@ namespace Utj.UnityChoseKun.Engine
         }
 
         /// <summary>
-        /// AnimatorKunの内容をAnimatorへ書き戻す
+        /// 将AnimatorKun的内容写回Animator
         /// </summary>
         /// <param name="component"></param>
         /// <returns></returns>

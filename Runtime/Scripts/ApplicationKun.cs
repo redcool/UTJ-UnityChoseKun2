@@ -5,7 +5,7 @@ namespace Utj.UnityChoseKun{
     [System.Serializable]
     public class ApplicationKun : ISerializerKun
     {
-        // メンバー変数の定義
+        // 成员变量的定义
         [SerializeField] string m_absoluteURL ;
         [SerializeField] string m_buildGUID;
         [SerializeField] string m_cloudProjectId;

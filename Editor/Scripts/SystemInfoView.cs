@@ -21,20 +21,20 @@ namespace Utj.UnityChoseKun
 #if UNITY_2020_3_OR_NEWER
                 public static readonly GUIContent ConstantBufferOffsetAlignment = new GUIContent("constantBufferOffsetAlignment", "Minimum buffer offset (in bytes) when binding a constant buffer using Shader.SetConstantBuffer or Material.SetConstantBuffer.");
 #endif
-                public static readonly GUIContent CopyTextureSupport = new GUIContent("copyTextureSupport", "さまざまな Graphics.CopyTexture ケースをサポートします");
-                public static readonly GUIContent DeviceModel = new GUIContent("deviceModel", "デバイスのモデル");
-                public static readonly GUIContent DeviceName = new GUIContent("deviceName", "デバイス名");
-                public static readonly GUIContent DeviceType = new GUIContent("deviceType", "デバイスタイプ");
-                public static readonly GUIContent DeviceUniqueIdentifier = new GUIContent("deviceUniqueIdentifier", "一意のデバイス識別子。すべてのデバイスで一意であることが保証されています");
-                public static readonly GUIContent GraphicsDeviceID = new GUIContent("graphicsDeviceID", "グラフィックデバイスの識別コード");
-                public static readonly GUIContent GraphicsDeviceName = new GUIContent("graphicsDeviceName", "グラフィックデバイス名");
-                public static readonly GUIContent GraphicsDeviceType = new GUIContent("graphicsDeviceType", "デバイスのタイプを返します");
-                public static readonly GUIContent GraphicsDeviceVendor = new GUIContent("graphicsDeviceVendor", "グラフィックデバイスのベンダー");
-                public static readonly GUIContent GraphicsDeviceVendorID = new GUIContent("graphicsDeviceVendorID", "グラフィックデバイスのベンダーの識別コード");
-                public static readonly GUIContent GraphicsDeviceVersion = new GUIContent("graphicsDeviceVersion", "グラフィックデバイスがサポートしている、グラフィックス API タイプとドライバーのバージョン");
-                public static readonly GUIContent GraphicsMemorySize = new GUIContent("graphicsMemorySize", "ビデオメモリの量");
-                public static readonly GUIContent GraphicsMultiThreaded = new GUIContent("graphicsMultiThreaded", "グラフィックデバイスがマルチスレッドレンダリングを行うかどうか");
-                public static readonly GUIContent GraphicsShaderLevel = new GUIContent("graphicsShaderLevel", "グラフィックデバイスのシェーダーの性能レベル");
+                public static readonly GUIContent CopyTextureSupport = new GUIContent("copyTextureSupport", "支持各种Graphics.CopyTexture情况");
+                public static readonly GUIContent DeviceModel = new GUIContent("deviceModel", "设备型号");
+                public static readonly GUIContent DeviceName = new GUIContent("deviceName", "设备名称");
+                public static readonly GUIContent DeviceType = new GUIContent("deviceType", "设备类型");
+                public static readonly GUIContent DeviceUniqueIdentifier = new GUIContent("deviceUniqueIdentifier", "唯一设备标识符。保证在所有设备中都是唯一的");
+                public static readonly GUIContent GraphicsDeviceID = new GUIContent("graphicsDeviceID", "图形设备标识代码");
+                public static readonly GUIContent GraphicsDeviceName = new GUIContent("graphicsDeviceName", "图形设备名称");
+                public static readonly GUIContent GraphicsDeviceType = new GUIContent("graphicsDeviceType", "返回设备类型");
+                public static readonly GUIContent GraphicsDeviceVendor = new GUIContent("graphicsDeviceVendor", "图形设备供应商");
+                public static readonly GUIContent GraphicsDeviceVendorID = new GUIContent("graphicsDeviceVendorID", "图形设备供应商标识代码");
+                public static readonly GUIContent GraphicsDeviceVersion = new GUIContent("graphicsDeviceVersion", "图形设备支持的图形API类型和驱动程序版本");
+                public static readonly GUIContent GraphicsMemorySize = new GUIContent("graphicsMemorySize", "视频内存大小");
+                public static readonly GUIContent GraphicsMultiThreaded = new GUIContent("graphicsMultiThreaded", "图形设备是否进行多线程渲染");
+                public static readonly GUIContent GraphicsShaderLevel = new GUIContent("graphicsShaderLevel", "图形设备的着色器性能级别");
                 public static readonly GUIContent GraphicsUVStartsAtTop = new GUIContent("graphicsUVStartsAtTop", "Returns true if the texture UV coordinate convention for this platform has Y starting at the top of the image.");
                 public static readonly GUIContent HasDynamicUniformArrayIndexingInFragmentShaders = new GUIContent("hasDynamicUniformArrayIndexingInFragmentShaders", "Returns true when the GPU has native support for indexing uniform arrays in fragment shaders without restrictions.");
                 public static readonly GUIContent HasHiddenSurfaceRemovalOnGPU = new GUIContent("hasHiddenSurfaceRemovalOnGPU", "True if the GPU supports hidden surface removal.");
@@ -57,31 +57,31 @@ namespace Utj.UnityChoseKun
                 public static readonly GUIContent MaxGraphicsBufferSize = new GUIContent("maxGraphicsBufferSize", "The maximum size of a graphics buffer (GraphicsBuffer, ComputeBuffer, vertex/index buffer, etc.) in bytes (Read Only).Any GPU buffer (GraphicsBuffer, ComputeBuffer or a vertex/index buffer used by a Mesh) can not be larger than this amount of bytes.");
 #endif                
 
-                public static readonly GUIContent MaxTextureSize = new GUIContent("maxTextureSize", "テクスチャの最大サイズ");
+                public static readonly GUIContent MaxTextureSize = new GUIContent("maxTextureSize", "纹理的最大尺寸");
 #if !UNITY_2020_3_OR_NEWER
                 public static readonly GUIContent MinConstantBufferOffsetAlignment = new GUIContent("minConstantBufferOffsetAlignment", "Minimum buffer offset (in bytes) when binding a constant buffer using Shader.SetConstantBuffer or Material.SetConstantBuffer.");
 #endif
-                public static readonly GUIContent NpotSupport = new GUIContent("npotSupport", "GPU はどのような NPOT (2の2乗でない) テクスチャのサポートを提供するか。");
-                public static readonly GUIContent OperatingSystem = new GUIContent("operatingSystem", "OS 名とバージョン");
+                public static readonly GUIContent NpotSupport = new GUIContent("npotSupport", "GPU 提供什么样的 NPOT (非2的幂) 纹理支持。");
+                public static readonly GUIContent OperatingSystem = new GUIContent("operatingSystem", "OS 名称和版本");
                 public static readonly GUIContent OperatingSystemFamily = new GUIContent("operatingSystemFamily", "Returns the operating system family the game is running on ");
-                public static readonly GUIContent ProcessorCount = new GUIContent("processorCount", "現在のプロセッサーの数");
-                public static readonly GUIContent ProcessorFrequency = new GUIContent("processorFrequency", "MHz単位のプロセッサー周波数");
-                public static readonly GUIContent ProcessorType = new GUIContent("processorType", "プロセッサー名");
+                public static readonly GUIContent ProcessorCount = new GUIContent("processorCount", "当前处理器数量");
+                public static readonly GUIContent ProcessorFrequency = new GUIContent("processorFrequency", "以MHz为单位的处理器频率");
+                public static readonly GUIContent ProcessorType = new GUIContent("processorType", "处理器名称");
                 public static readonly GUIContent RenderingThreadingMode = new GUIContent("renderingThreadingMode", "Application's actual rendering threading mode ");
                 public static readonly GUIContent SupportedRandomWriteTargetCount = new GUIContent("supportedRandomWriteTargetCount", "The maximum number of random write targets (UAV) that Unity supports simultaneously. ");
-                public static readonly GUIContent SupportedRenderTargetCount = new GUIContent("supportedRenderTargetCount", "サポートしているレンダリングターゲットの数");
-                public static readonly GUIContent Supports2DArrayTextures = new GUIContent("supports2DArrayTextures", "2D 配列テクスチャがサポートされているかどうか");
+                public static readonly GUIContent SupportedRenderTargetCount = new GUIContent("supportedRenderTargetCount", "支持的渲染目标数量");
+                public static readonly GUIContent Supports2DArrayTextures = new GUIContent("supports2DArrayTextures", "是否支持2D数组纹理");
                 public static readonly GUIContent Supports32bitsIndexBuffer = new GUIContent("supports32bitsIndexBuffer", "Are 32-bit index buffers supported? ");
                 public static readonly GUIContent Supports3DRenderTextures = new GUIContent("supports3DRenderTextures", "Are 3D (volume) RenderTextures supported?");
-                public static readonly GUIContent Supports3DTextures = new GUIContent("supports3DTextures", "3D (volume) テクスチャがサポートされているかどうか");
-                public static readonly GUIContent SupportsAccelerometer = new GUIContent("supportsAccelerometer", "加速度センサーを利用できるかどうか");
+                public static readonly GUIContent Supports3DTextures = new GUIContent("supports3DTextures", "是否支持3D (volume) 纹理");
+                public static readonly GUIContent SupportsAccelerometer = new GUIContent("supportsAccelerometer", "是否可以使用加速度传感器");
                 public static readonly GUIContent SupportsAsyncCompute = new GUIContent("supportsAsyncCompute", "Returns true when the platform supports asynchronous compute queues and false if otherwise.");
                 public static readonly GUIContent SupportsAsyncGPUReadback = new GUIContent("supportsAsyncGPUReadback", "Returns true if asynchronous readback of GPU data is available for this device and false otherwise.");
                 public static readonly GUIContent SupportsAudio = new GUIContent("supportsAudio", "Is there an Audio device available for playback?");
 #if UNITY_2020_1_OR_NEWER
                 public static readonly GUIContent SupportsCompressed3DTextures = new GUIContent("supportsCompressed3DTextures", "Are compressed formats for 3D (volume) textures supported? (Read Only).Not all graphics APIs and platforms support compressed Texture3D textures, for example Metal on macOS before 10.15 does not.");
 #endif
-                public static readonly GUIContent SupportsComputeShaders = new GUIContent("supportsComputeShaders", "Compute シェーダーがサポートされているかどうか");
+                public static readonly GUIContent SupportsComputeShaders = new GUIContent("supportsComputeShaders", "是否支持Compute着色器");
 #if UNITY_2020_1_OR_NEWER
                 public static readonly GUIContent SupportsConservativeRaster = new GUIContent("supportsConservativeRaster", "Is conservative rasterization supported? ");
 #endif
@@ -93,8 +93,8 @@ namespace Utj.UnityChoseKun
 #endif
                 public static readonly GUIContent SupportsGyroscope = new GUIContent("supportsGyroscope", "Returns true when the platform supports GraphicsFences, and false if otherwise.");
                 public static readonly GUIContent SupportsHardwareQuadTopology = new GUIContent("supportsHardwareQuadTopology", "Does the hardware support quad topology? (Read Only)");
-                public static readonly GUIContent SupportsInstancing = new GUIContent("supportsInstancing", "GPU ドローコールのインスタンス化がサポートされているかどうか");
-                public static readonly GUIContent SupportsLocationService = new GUIContent("supportsLocationService", "ロケーションサービス（ GPS ）が利用できるかどうか");
+                public static readonly GUIContent SupportsInstancing = new GUIContent("supportsInstancing", "是否支持GPU绘制调用的实例化");
+                public static readonly GUIContent SupportsLocationService = new GUIContent("supportsLocationService", "是否可以使用位置服务（ GPS ）");
                 public static readonly GUIContent SupportsMipStreaming = new GUIContent("supportsMipStreaming", "streaming of texture mip maps supported?");
                 public static readonly GUIContent SupportsMotionVectors = new GUIContent("supportsMotionVectors", "Whether motion vectors are supported on this platform.");
                 public static readonly GUIContent SupportsMultisampleAutoResolve = new GUIContent("supportsMultisampleAutoResolve", "Returns true if multisampled textures are resolved automatically");
@@ -108,23 +108,23 @@ namespace Utj.UnityChoseKun
 #if UNITY_2020_1_OR_NEWER
                 public static readonly GUIContent SupportsMultiview = new GUIContent("supportsMultiview", "Boolean that indicates whether Multiview is supported (true if supported, false if not supported). (Read Only)");
 #endif
-                public static readonly GUIContent SupportsRawShadowDepthSampling = new GUIContent("supportsRawShadowDepthSampling", "サポートされているシャドウマップからのサンプリングは生のデプスか?");
+                public static readonly GUIContent SupportsRawShadowDepthSampling = new GUIContent("supportsRawShadowDepthSampling", "从支持的阴影图采样是原始深度吗?");
                 public static readonly GUIContent SupportsRayTracing = new GUIContent("supportsRayTracing", "Checks if ray tracing is supported by the current configuration.");
 #if UNITY_2020_1_OR_NEWER
                 public static readonly GUIContent SupportsRenderTargetArrayIndexFromVertexShader = new GUIContent("supportsRenderTargetArrayIndexFromVertexShader", "Can SV_RenderTargetArrayIndex be used in a vertex shader? (Read Only)");
 #endif
                 public static readonly GUIContent SupportsSeparatedRenderTargetsBlend = new GUIContent("supportsSeparatedRenderTargetsBlend", "supportsSeparatedRenderTargetsBlend");
                 public static readonly GUIContent SupportsSetConstantBuffer = new GUIContent("supportsSetConstantBuffer", "Does the current renderer support binding constant buffers directly?");
-                public static readonly GUIContent SupportsShadows = new GUIContent("SupportsShadows", "グラフィックスカードが影をサポートしているかどうか");
-                public static readonly GUIContent SupportsSparseTextures = new GUIContent("supportsSparseTextures", "スパーステクスチャはサポートされますか。");
+                public static readonly GUIContent SupportsShadows = new GUIContent("SupportsShadows", "图形卡是否支持阴影");
+                public static readonly GUIContent SupportsSparseTextures = new GUIContent("supportsSparseTextures", "是否支持稀疏纹理。");
 #if UNITY_2021_1_OR_NEWER
                 public static readonly GUIContent SupportsStoreAndResolveAction = new GUIContent("supportsStoreAndResolveAction", "	This property is true if the graphics API of the target build platform takes RenderBufferStoreAction.StoreAndResolve into account, false if otherwise.");
 #endif
                 public static readonly GUIContent SupportsTessellationShaders = new GUIContent("supportsTessellationShaders", "Are tessellation shaders supported? ");
                 public static readonly GUIContent SupportsTextureWrapMirrorOnce = new GUIContent("supportsTextureWrapMirrorOnce", "Returns true if the 'Mirror Once' texture wrap mode is supported. ");
-                public static readonly GUIContent SupportsVibration = new GUIContent("supportsVibration", "そのデバイスは振動によるユーザーの触覚フィードバックを提供することができるか。");
-                public static readonly GUIContent SystemMemorySize = new GUIContent("systemMemorySize", "システムメモリの量");
-                public static readonly GUIContent UnsupportedIdentifier = new GUIContent("unsupportedIdentifier", "現在のプラットフォームでサポートされていない SystemInfo 文字列プロパティーからの戻り値");
+                public static readonly GUIContent SupportsVibration = new GUIContent("supportsVibration", "该设备是否可以通过振动提供用户的触觉反馈。");
+                public static readonly GUIContent SystemMemorySize = new GUIContent("systemMemorySize", "系统内存量");
+                public static readonly GUIContent UnsupportedIdentifier = new GUIContent("unsupportedIdentifier", "来自当前平台不支持的 SystemInfo 字符串属性的返回值");
                 public static readonly GUIContent UsesLoadStoreActions = new GUIContent("usesLoadStoreActions", "True if the Graphics API takes RenderBufferLoadAction and RenderBufferStoreAction into account, false if otherwise.");
                 public static readonly GUIContent UsesReversedZBuffer = new GUIContent("usesReversedZBuffer", "his property is true if the current platform uses a reversed depth buffer (where values range from 1 at the near plane and 0 at far plane), and false if the depth buffer is normal (0 is near, 1 is far). ");
 

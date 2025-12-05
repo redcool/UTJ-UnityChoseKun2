@@ -63,7 +63,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// コンストラクタ
+            /// 构造函数
             /// </summary>
             public CameraView() : base()
             {

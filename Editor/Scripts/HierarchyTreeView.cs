@@ -64,16 +64,16 @@ namespace Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         /// <param name="state"></param>
         public HierarchyTreeView(TreeViewState state) : base(state) { }
 
 
         /// <summary>
-        /// TreeViewを再構築する為の処理
+        /// 用于重新构建TreeView的处理
         /// </summary>
-        /// <returns>RootとなるTreeViewItem</returns>
+        /// <returns>作为Root的TreeViewItem</returns>
         protected override TreeViewItem BuildRoot()
         {                 
             var root = new TreeViewItem(id: -1, depth: -1, displayName: "Root");
@@ -89,7 +89,7 @@ namespace Utj.UnityChoseKun.Editor
                         var scene = new TreeViewItem(id: i, depth: 0, displayName: sceneKun.name);
                         root.AddChild(scene);
 
-                        // Sceneの直下に来るGameObjectとその子になるGameObjectを再帰的に追加                        
+                        // 递归添加Scene直下的GameObject及其子GameObject                        
                         var parents = new List<GameObjectKun>();
                         foreach (var go in sceneKun.gameObjectKuns)
                         {
@@ -116,7 +116,7 @@ namespace Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// TreeViewの１行を構築する
+        /// 构建TreeView的一行
         /// </summary>
         /// <param name="args"></param>
         protected override void RowGUI (RowGUIArgs args)
@@ -146,11 +146,11 @@ namespace Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// TreeViewを再帰的に構築する
+        /// 递归构建TreeView
         /// </summary>
-        /// <param name="go">起点となるGameObjectKun</param>
-        /// <param name="depth">起点の深さ</param>
-        /// <returns>GameObjectKunのTreeViewIten</returns>
+        /// <param name="go">作为起点的GameObjectKun</param>
+        /// <param name="depth">起点的深度</param>
+        /// <returns>GameObjectKun的TreeViewItem</returns>
         TreeViewItem MakeTreeViewRecursive(GameObjectKun go,int depth)
         {
             var treeViewItem = new TreeViewItem(id:go.instanceID,depth:depth,displayName:go.name);
@@ -177,9 +177,9 @@ namespace Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// 選択項目が変更された時のCB
+        /// 选择项变更时的CB
         /// </summary>
-        /// <param name="selectedIds">選択されているinstanceIDのList</param>
+        /// <param name="selectedIds">已选择的instanceID的List</param>
         protected override void SelectionChanged (IList<int> selectedIds)
         {
             base.SelectionChanged(selectedIds);            
@@ -198,7 +198,7 @@ namespace Utj.UnityChoseKun.Editor
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="args">Drag&Dropの対象となるTreeViewItemの情報が含まれる</param>
+        /// <param name="args">包含作为Drag&Drop对象的TreeViewItem信息</param>
         /// <returns></returns>
         protected override bool CanStartDrag(CanStartDragArgs args)
         {
@@ -303,7 +303,7 @@ namespace Utj.UnityChoseKun.Editor
                 gameObjectKun.transformKun.parentInstanceID = 0;
             }
 
-            // Scene間の移動が発生した場合、Scene側にも変更処理が必要
+            // 发生Scene间移动时，Scene侧也需要变更处理
             var sceneTreeViewItem = GetParentRecursive(treeViewItem, 0);
             var sceneKun = sceneManagerKun.sceneKuns[sceneTreeViewItem.id];            
             if(gameObjectKun.transformKun.sceneHn != sceneKun.handle)
@@ -352,14 +352,14 @@ namespace Utj.UnityChoseKun.Editor
 
         void MoveTreeViewItem(TreeViewItem treeViewItem,TreeViewItem parent,int insertIndex)
         {            
-            // Sceneは移動出来ない
+            // Scene无法移动
             if(treeViewItem.depth <= 0)
             {
                 return;
             }
 
 
-            // 親が同じな場合は
+            // 父对象相同时
             if (treeViewItem.parent == parent)
             {
                 insertIndex--;
@@ -404,7 +404,7 @@ namespace Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// depthに一致する親を再帰的に探す
+        /// 递归查找与depth匹配的父对象
         /// </summary>
         /// <param name="treeViewItem"></param>
         /// <param name="depth"></param>

@@ -49,7 +49,7 @@ namespace Utj.UnityChoseKun.Engine
             var i = 0;
             foreach (var asset in assetDict.Values)
             {
-                // ジェネリック引数付きのコンストラクター
+                // 带有泛型参数的构造函数
                 assetKuns[i++] = Constructer<B, A>(asset);                
             }
             assetPacket = new AssetPacket<B>(assetKuns);

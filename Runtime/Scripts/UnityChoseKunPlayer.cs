@@ -8,6 +8,9 @@ using Rendering.Universal;
 
 #if UNITY_EDITOR
     using UnityEditor;
+    using PowerUtilities.UTJ;
+    using System.Linq;
+    using System.Reflection;
 
     [CustomEditor(typeof(UnityChoseKunPlayer))]
     public class UnityChoseKunPlayerEditor : Editor
@@ -22,6 +25,12 @@ using Rendering.Universal;
             if(GUILayout.Button(GUI_OPEN_PLAYER_HIERARCHY))
             {
                 EditorApplication.ExecuteMenuItem(OPEN_PLAYER_HIERARCHY);
+            }
+            if (GUILayout.Button("Test"))
+            {
+                var t = KunTools.GetKunViewType(typeof(TestMonoKun));
+                    ;
+                    Debug.Log(t);
             }
         }
     }

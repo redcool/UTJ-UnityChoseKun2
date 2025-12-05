@@ -12,19 +12,19 @@ namespace  Utj.UnityChoseKun.Engine
 
 
     /// <summary>
-    ///  ComponentをSerialize/Deserializeする為のClass
+    ///  用于Serialize/Deserialize Component的类
     ///  Program by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Ansi)]
     public class ComponentKun : ObjectKun{                    
         
-        // 定数の定義
+        // 常量定义
         
 
 
         /// <summary>
-        /// ComponentKunのタイプの定義
+        /// ComponentKun的类型定义
         /// </summary>
         public enum ComponentKunType {            
             Invalid = -1,
@@ -52,6 +52,7 @@ namespace  Utj.UnityChoseKun.Engine
             Canvas,
 
             Volume,
+            TestMono,
 
             UniversalAdditionalCameraData,
             UniversalAdditionalLightData,
@@ -67,10 +68,10 @@ namespace  Utj.UnityChoseKun.Engine
                
 
         /// <summary>
-        /// ComponentのComponentKunTypeを取得する
+        /// 获取Component的ComponentKunType
         /// </summary>
-        /// <params name="component">チェックするComponent</params>
-        /// <returns>ComponentのComponentKunType</params>
+        /// <params name="component">要检查的Component</params>
+        /// <returns>Component的ComponentKunType</params>
         public static ComponentKunType GetComponentKunType(Component component)
         {
             if(component == null)
@@ -78,7 +79,7 @@ namespace  Utj.UnityChoseKun.Engine
                 return ComponentKunType.MissingMono;
             }
             //
-            // [NOTE] 基底クラスのチェックが後になるように記述する必要がある
+            // [NOTE] 需要这样记述，使基类的检查在后面
             //
             if (component is Transform)             { return ComponentKunType.Transform; }
             if (component is Camera)                { return ComponentKunType.Camera; }
@@ -255,19 +256,20 @@ namespace  Utj.UnityChoseKun.Engine
 
 
         //
-        // Memberの定義
+        // 成员定义
         //
 
         /// <summary>
-        /// ComponentKunの種別
+        /// ComponentKun的种类
         /// </summary>
-        [SerializeField] protected ComponentKunType m_componentKunType; 
+        [SerializeField] protected ComponentKunType m_componentKunType;
+
         public ComponentKunType componentKunType{
             get{return m_componentKunType;}
             protected set{m_componentKunType = value;}
         }
 
-        // GameObjectKunのコンストラクタ・Deserialize及びAddComponentでこの変数に値が設定される。
+        // 在GameObjectKun的构造函数、Deserialize以及AddComponent中设置此变量的值。
         [SerializeField]
         public GameObjectKun m_gameObjectKun;
         public GameObjectKun gameObjectKun
@@ -297,7 +299,7 @@ namespace  Utj.UnityChoseKun.Engine
         }
         
         /// <summary>
-        /// コンストラクタ 
+        /// 构造函数 
         /// </summary>
         public ComponentKun():this(null){}
 
@@ -313,10 +315,10 @@ namespace  Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// Componentへ内容を書き戻す
+        /// 将内容写回Component
         /// </summary>
-        /// <param name="component">書き戻されるComponent</param>
-        /// <returns>結果  true : 書き戻しが行われた false : 書き戻しが発生しなかった</returns>        
+        /// <param name="component">要写回的Component</param>
+        /// <returns>结果  true : 执行了写回 false : 未发生写回</returns>        
         public virtual bool WriteBack(Component component)
         {
             return base.WriteBack(component);            

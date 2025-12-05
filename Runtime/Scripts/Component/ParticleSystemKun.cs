@@ -6,14 +6,14 @@ using UnityEngine;
 namespace Utj.UnityChoseKun.Engine
 {
     /// <summary>
-    /// ParticleSystemをSerialize/DeSerializeを行う為のClass
+    /// 用于ParticleSystem序列化/反序列化的Class
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
     public class ParticleSystemKun : ComponentKun
     {
         /// <summary>
-        /// MainModuleのSerialize/DeSerialize用Class
+        /// 用于MainModule序列化/反序列化的Class
         /// </summary>
         [System.Serializable]
         public class MainModuleKun : ISerializerKun
@@ -116,15 +116,15 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public ParticleSystemKun() : this(null) { }
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="component">元となるComponent</param>
+        /// <param name="component">原始Component</param>
         public ParticleSystemKun(Component component) : base(component)
         {
             componentKunType = ComponentKunType.ParticleSystem;
@@ -168,10 +168,10 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// Componentに書き戻す
+        /// 写回到Component
         /// </summary>
         /// <param name="component"></param>
-        /// <returns>実行結果 true:書き戻しを行った false:書き戻しを行わなかった</returns>
+        /// <returns>执行结果 true:执行了写回 false:未执行写回</returns>
         public override bool WriteBack(Component component)
         {
             if (base.WriteBack(component))

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -8,7 +8,7 @@ using Utj.UnityChoseKun.Engine;
 namespace Utj.UnityChoseKun.Editor.Rendering
 {
     /// <summary>
-    /// Volume‚ğInspector‚É•\¦‚·‚éˆ×‚ÌClass
+    /// Volumeå‚ªInspectoråµæ˜å¸µå¡å‚å ŠåºClass
     /// </summary>
     public class VolumeView : MonoBehaviourView
     {
@@ -17,7 +17,7 @@ namespace Utj.UnityChoseKun.Editor.Rendering
             public static GUIContent Weight     = new GUIContent("Weight");
             public static GUIContent Priority   = new GUIContent("Priority");
             public static GUIContent Profile    = new GUIContent("Profile");
-            // Volume‚ÌƒAƒCƒRƒ“‚Íƒrƒ‹ƒhƒCƒ“‚Å‚Í‚È‚­ƒpƒbƒP[ƒW‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚Ì‚Å•Û—¯
+            // Volumeåºå‚¾åƒ€åƒå„å¼åƒ¹å„–åƒªåƒ€å„å±å¼å´å”åƒ·åƒ¢åƒä¹•åƒ•åµå¨·å‚‘å‚Ÿå°å„å‚åºå±æ›æ£·
             //public static readonly Texture2D VolumeIcon = (Texture2D)EditorGUIUtility.Load("Volume");
         }
 
@@ -29,7 +29,7 @@ namespace Utj.UnityChoseKun.Editor.Rendering
         }
 
         /// <summary>
-        /// •\¦‚·‚éVolumeKun
+        /// æ˜å¸µå¡å‚VolumeKun
         /// </summary>
         VolumeKun volumeKun
         {
@@ -43,7 +43,7 @@ namespace Utj.UnityChoseKun.Editor.Rendering
 
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// åƒå„åƒ—åƒ©å„”åƒ‹åƒ
         /// </summary>
         public VolumeView():base()
         {

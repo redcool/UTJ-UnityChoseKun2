@@ -267,11 +267,11 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// instanceIDをキーにしてGameObjectを検索する
+        /// 以instanceID为键在子对象中搜索GameObject
         /// </summary>
-        /// <param name="gameObject">検索の起点となるGameObject</param>
-        /// <param name="instanceID">検索するinstanceID</param>
-        /// <returns>instanceIDと一致するGameObject</returns>
+        /// <param name="gameObject">搜索的起点GameObject</param>
+        /// <param name="instanceID">要搜索的instanceID</param>
+        /// <returns>与instanceID一致的GameObject</returns>
         public static GameObject FindGameObjectInChildren(GameObject gameObject, int instanceID)
         {
             if (gameObject == null)

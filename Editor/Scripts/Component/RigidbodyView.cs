@@ -14,14 +14,14 @@ namespace Utj.UnityChoseKun
             private static class Styles
             {
                 public static GUIContent Rigidbody = new GUIContent("Rigidbody", (Texture2D)EditorGUIUtility.Load("d_Rigidbody Icon"));
-                public static GUIContent Mass = new GUIContent("Mass", "Rigidbody の質量");
-                public static GUIContent Drag = new GUIContent("Drag", "オブジェクトの Drag (抗力)");
-                public static GUIContent AngularDrag = new GUIContent("AngularDrag", "オブジェクトの Angular drag (回転抗力)");
-                public static GUIContent UseGravity = new GUIContent("UseGravity", "Rigidbody が重力の影響を受けるかどうか");
-                public static GUIContent IsKinematic = new GUIContent("IsKinematic", "物理演算の影響を受けるかどうか");
-                public static GUIContent Interpolate = new GUIContent("Interpolate", "interpolation を使用することで、固定フレームレートで物理処理実行のエフェクトをなめらかにできます。");
-                public static GUIContent CollisionDetectionMode = new GUIContent("CollisionDetection", "Rigidbody の衝突検出モード");
-                public static GUIContent Constraints = new GUIContent("Constraints", "Rigidbody のシミュレーションで自由に操作できる軸をコントロールします");
+                public static GUIContent Mass = new GUIContent("Mass", "Rigidbody 的质量");
+                public static GUIContent Drag = new GUIContent("Drag", "对象的 Drag (阻力)");
+                public static GUIContent AngularDrag = new GUIContent("AngularDrag", "对象的 Angular drag (角阻力)");
+                public static GUIContent UseGravity = new GUIContent("UseGravity", "Rigidbody 是否受重力影响");
+                public static GUIContent IsKinematic = new GUIContent("IsKinematic", "是否受物理运算影响");
+                public static GUIContent Interpolate = new GUIContent("Interpolate", "通过使用interpolation，可以使固定帧率下物理处理执行的效果更加平滑。");
+                public static GUIContent CollisionDetectionMode = new GUIContent("CollisionDetection", "Rigidbody 的碰撞检测模式");
+                public static GUIContent Constraints = new GUIContent("Constraints", "控制Rigidbody模拟中可以自由操作的轴");
                 public static GUIContent FreezePosition = new GUIContent("Freeze Position");
                 public static GUIContent FreezeRotation = new GUIContent("Freeze Rotation");
             }

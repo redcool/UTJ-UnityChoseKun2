@@ -11,7 +11,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// MeshCplliderを表示する為のClass
+        /// 用于显示MeshCollider的Class
         /// Programed by Katsumasa.Kimura
         /// </summary>
         public class MeshColliderView : ColliderView

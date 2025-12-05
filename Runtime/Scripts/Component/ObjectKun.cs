@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Utj.UnityChoseKun{
     /// <summary>
-    /// UnityEngine.ObjectをRuntime/Editor間でシリアライズ/デシリアライズする為のClass
+    /// 用于在Runtime/Editor之间序列化/反序列化UnityEngine.Object的Class
     /// </summary>    
     [System.Serializable]    
     public class ObjectKun : ISerializerKun
@@ -82,7 +82,7 @@ namespace Utj.UnityChoseKun{
 
 
         /// <summary>
-        /// ObjectKunのコンストラクタ
+        /// ObjectKun的构造函数
         /// </summary>
         public ObjectKun():this(null)
         {
@@ -93,9 +93,9 @@ namespace Utj.UnityChoseKun{
 
 
         /// <summary>
-        /// ObjectKunのコンストラクタ
+        /// ObjectKun的构造函数
         /// </summary>
-        /// <param name="obj">Object型のオブジェクト</param>
+        /// <param name="obj">Object类型的对象</param>
         public ObjectKun(UnityEngine.Object obj)
         {
             name = "";
@@ -108,10 +108,10 @@ namespace Utj.UnityChoseKun{
         
 
         /// <summary>
-        /// Objectに内容を書き戻す
+        /// 将内容写回到Object
         /// </summary>
         /// <param name="obj"></param>
-        /// <returns>結果 true:書き戻しが発生 false:書き戻しの必要がなかった</returns>
+        /// <returns>结果 true:发生了写回 false:不需要写回</returns>
         public virtual bool WriteBack(UnityEngine.Object obj)
         {
             return dirty ;
@@ -129,7 +129,7 @@ namespace Utj.UnityChoseKun{
 
 
         /// <summary>
-        /// ObjectをSerializeする
+        /// 序列化Object
         /// </summary>
         /// <param name="binaryWriter"></param>
         public virtual void Serialize(BinaryWriter binaryWriter)
@@ -141,7 +141,7 @@ namespace Utj.UnityChoseKun{
 
 
         /// <summary>
-        /// ObjectをDeserializeする
+        /// 反序列化Object
         /// </summary>
         /// <param name="binaryReader"></param>
         public virtual void Deserialize(BinaryReader binaryReader)
@@ -153,7 +153,7 @@ namespace Utj.UnityChoseKun{
 
 
         /// <summary>
-        /// ObjectKunの比較
+        /// ObjectKun的比较
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>

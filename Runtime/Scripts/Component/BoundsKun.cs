@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Utj.UnityChoseKun
 {
     /// <summary>
-    /// Boundsをシリアライズ・デシリアライズする為のClass
+    /// 用于序列化/反序列化Bounds的Class
     /// </summary>
     [System.Serializable]
     public class BoundsKun : ISerializerKun
@@ -13,7 +13,7 @@ namespace Utj.UnityChoseKun
         [SerializeField] Vector3Kun m_size;
 
 
-        // 受け渡しはVector3で行うが内部的にはVector3Kun
+        // 外部传递使用Vector3，但内部使用Vector3Kun
         public Vector3 center
         {
             get { return m_center.GetVector3();}
@@ -36,10 +36,10 @@ namespace Utj.UnityChoseKun
 
 
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="center">中心座標</param>
-        /// <param name="size">サイズ</param>
+        /// <param name="center">中心坐标</param>
+        /// <param name="size">尺寸</param>
         public BoundsKun(Vector3Kun center,Vector3Kun size)
         {
             this.m_center = center;

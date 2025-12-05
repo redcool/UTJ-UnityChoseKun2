@@ -7,8 +7,8 @@ namespace Utj.UnityChoseKun{
     public class ShaderKun : ObjectKun
     {
         // [Note]
-        // Unity2019以前はShaderのPropertyにはUnityEditor.ShaderUtilからのみアクセス可能であった為、
-        // Runtimeではアクセス出来ませんでした。
+        // Unity2019以前，Shader的Property只能通过UnityEditor.ShaderUtil访问，
+        // 因此在Runtime下无法访问。
 #if UNITY_2019_1_OR_NEWER
         [System.Serializable]
         public class Property : ISerializerKun        

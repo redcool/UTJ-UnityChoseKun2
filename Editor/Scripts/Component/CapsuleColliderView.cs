@@ -12,7 +12,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// CapuselCplliderを描画する為のClass
+        /// 用于绘制CapsuleCollider的Class
         /// </summary>
         public class CapsuleColliderView : ColliderView
         {

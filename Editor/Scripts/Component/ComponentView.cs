@@ -15,21 +15,21 @@ namespace  Utj.UnityChoseKun.Editor
     
 
     /// <summary>
-    /// Componentの表示を行う基底クラス 
+    /// 用于显示Component的基类 
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
     public class ComponentView
-    {        
-        // [NOTE] ComponentKun型のClassが追加されたらここに追加する
-        // ComponentKunType,ComponentViewのSystem.Type
-        static Dictionary<ComponentKun.ComponentKunType,System.Type> componentViewTbls = new Dictionary<BehaviourKun.ComponentKunType, System.Type>{
+    {
+        // [NOTE] 如果添加了ComponentKun型的Class，请在此处添加
+        // ComponentKunType,ComponentView的System.Type
+        static Dictionary<ComponentKun.ComponentKunType, System.Type> componentViewTbls = new Dictionary<BehaviourKun.ComponentKunType, System.Type>{
             {ComponentKun.ComponentKunType.Transform,               typeof(TransformView)},
             {ComponentKun.ComponentKunType.Camera,                  typeof(CameraView)},
             {ComponentKun.ComponentKunType.Light,                   typeof(LightView)},
 
             {ComponentKun.ComponentKunType.SpriteRenderer,typeof(SpriteRendererView) },
-            
+
             {ComponentKun.ComponentKunType.SkinnedMeshMeshRenderer, typeof(SkinnedMeshRendererView)},
             {ComponentKun.ComponentKunType.MeshRenderer,            typeof(MeshRendererView)},
             {ComponentKun.ComponentKunType.Renderer,                typeof(RendererView)},
@@ -53,12 +53,15 @@ namespace  Utj.UnityChoseKun.Editor
             {ComponentKun.ComponentKunType.MonoBehaviour,                   typeof(MonoBehaviourView)},
             {ComponentKun.ComponentKunType.Behaviour,                       typeof(BehaviourView)},
             {ComponentKun.ComponentKunType.Component,                       typeof(ComponentView)},
-            
+
             {ComponentKun.ComponentKunType.MissingMono,            typeof(MissingMonoView) },
 
-          
+            {ComponentKun. ComponentKunType.TestMono,                 typeof(TestMonoView) },
         };
         
+        static ComponentView()
+        {
+        }
 
         public static System.Type GetComponentViewSyetemType(BehaviourKun.ComponentKunType componentType)
         {
@@ -85,7 +88,7 @@ namespace  Utj.UnityChoseKun.Editor
         }
 
         /// <summary>
-        /// Class名の横に表示されるアイコン
+        /// 显示在Class名旁边的图标
         /// </summary>
         protected Texture2D mComponentIcon;
         protected Texture2D componentIcon
@@ -95,7 +98,7 @@ namespace  Utj.UnityChoseKun.Editor
         }
         
         /// <summary>
-        /// Foldoutの値
+        /// Foldout的值
         /// </summary>
         [SerializeField] bool mFoldout;
         protected bool foldout
@@ -105,9 +108,9 @@ namespace  Utj.UnityChoseKun.Editor
         }
 
         /// <summary>
-        /// ComponentKunを設定する
+        /// 设置ComponentKun
         /// </summary>
-        /// <param name="componentKun">設定されるComponentKun</param>
+        /// <param name="componentKun">要设置的ComponentKun</param>
         public virtual void SetComponentKun(ComponentKun componentKun)
         {
             this.componentKun = componentKun;
@@ -115,7 +118,7 @@ namespace  Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// ComponentKunを取得する
+        /// 获取ComponentKun
         /// </summary>
         /// <returns>ComponentKun</returns>
         public virtual ComponentKun GetComponentKun()
@@ -133,7 +136,7 @@ namespace  Utj.UnityChoseKun.Editor
 
 
         /// <summary>
-        /// OnGUIから呼び出す処理
+        /// 从OnGUI调用的处理
         /// </summary>
         public virtual bool OnGUI()
         {

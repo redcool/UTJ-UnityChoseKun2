@@ -479,7 +479,7 @@ namespace Utj.UnityChoseKun
             }
             
             
-            // <summary> OnGUIから呼び出す処理 </summary>
+            // <summary> 从OnGUI调用的处理 </summary>
             public override bool OnGUI()
             {
                 if (DrawEnabled())

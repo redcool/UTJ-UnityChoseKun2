@@ -15,7 +15,7 @@ namespace Utj.UnityChoseKun
         /// </summary>
         public class ShadersView
         {
-            // Member変数の定義
+            // 成员变量的定义
             [SerializeField] static ShaderKun[] m_shaderKuns;
             [SerializeField] static string[] m_shaderNames;
             [SerializeField] Vector2 m_scrollPos;

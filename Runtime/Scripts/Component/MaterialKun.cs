@@ -9,7 +9,7 @@ namespace Utj.UnityChoseKun.Engine
     public class MaterialKun : ObjectKun
     {
         /// <summary>
-        /// MaterialPropertyをRuntime/Editor両方で使用する為のClass
+        /// 用于在Runtime/Editor双方使用MaterialProperty的类
         /// </summary>
         [System.Serializable]
         public class Property : ISerializerKun

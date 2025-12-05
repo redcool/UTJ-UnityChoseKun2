@@ -10,7 +10,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// Transformを描画する為のClass
+        /// 用于绘制Transform的Class
         /// </summary>
         public class TransformView : ComponentView
         {
@@ -43,7 +43,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// 描画処理
+            /// 绘制处理
             /// </summary>
             /// <returns></returns>
             public override bool OnGUI()

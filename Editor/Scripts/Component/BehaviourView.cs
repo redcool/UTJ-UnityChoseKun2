@@ -10,7 +10,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// Behaviourを編集するクラス
+        /// 用于编辑Behaviour的类
         /// Programed by Katsumasa.Kimura
         /// </summary>
         public class BehaviourView : ComponentView
@@ -36,7 +36,7 @@ namespace Utj.UnityChoseKun
             }
 
             /// <summary> 
-            /// OnGUIから呼び出す処理
+            /// 从OnGUI调用的处理
             /// </summary>
             public override bool OnGUI()
             {

@@ -4,12 +4,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using PowerUtilities.UTJ;
 
 
 namespace Utj.UnityChoseKun.Engine
 {
     /// <summary>
-    /// GameObjectをSerialize/Deserializeする為のClass
+    /// 用于Serialize/Deserialize GameObject的类
     /// </summary>
     [System.Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Ansi)]
@@ -24,7 +26,8 @@ namespace Utj.UnityChoseKun.Engine
         [SerializeField] string m_name;
         [SerializeField] ComponentKun.ComponentKunType[] m_componentKunTypes;
         [SerializeField] ComponentKun[] m_componentKuns;
-
+        //ex
+        public string[] componentKunTypeFullNames;
 
         public bool activeSelf{
             get{return m_activeSelf;}
@@ -94,8 +97,10 @@ namespace Utj.UnityChoseKun.Engine
         /// 
         /// </summary>
         /// <param name="go"></param>
-        public GameObjectKun(GameObject go){
-            if(go == null){
+        public GameObjectKun(GameObject go)
+        {
+            if (go == null)
+            {
                 return;
             }
             activeSelf = go.activeSelf;
@@ -103,18 +108,32 @@ namespace Utj.UnityChoseKun.Engine
             layer = go.layer;
             tag = go.tag;
             instanceID = go.GetInstanceID();
-            name = go.name;                                
-                                    
+            name = go.name;
+
             var components = go.GetComponents(typeof(Component));
             componentKuns = new ComponentKun[components.Length];
             componentKunTypes = new ComponentKun.ComponentKunType[components.Length];
+            componentKunTypeFullNames = new string[components.Length];
             var i = 0;
-            foreach (var component in components){                
-                componentKunTypes[i] = ComponentKun.GetComponentKunType(component);                
+            foreach (var component in components)
+            {
+                componentKunTypes[i] = ComponentKun.GetComponentKunType(component);
                 componentKuns[i] = ComponentKun.Instantiate(componentKunTypes[i], component);
+
+                // try intercept MonoBehaviourKun
+                componentKunTypeFullNames[i] = "null";
+                // get wrapper type from KunTools
+                var kunType = KunTools.GetKunType(component);
+                if (kunType != null)
+                {
+                    componentKuns[i] = (ComponentKun)Activator.CreateInstance(kunType, (object)component);
+                    componentKunTypeFullNames[i] = kunType.FullName;
+                }
+
                 componentKuns[i].gameObjectKun = this;
-                i++;                
-            }                        
+
+                i++;
+            }
             dirty = false;
         }
 
@@ -146,8 +165,8 @@ namespace Utj.UnityChoseKun.Engine
                 gameObject.name = name;
             }
 
-            // instanceIDが一致するComponetを探し出してWriteBackを実行する。
-            // ※ComponentKun側がDirtyであるかいなかはGameObjectKunではなく各ComponentKun側に依存する
+            // 找出instanceID匹配的Component并执行WriteBack。
+            // ※ComponentKun是否Dirty不由GameObjectKun决定，而是由各ComponentKun自行判断
             var components = gameObject.GetComponents<Component>();
             for (var i = 0; i < componentKunTypes.Length; i++){                        
                 var componentKunType = componentKunTypes[i];
@@ -191,8 +210,6 @@ namespace Utj.UnityChoseKun.Engine
             binaryWriter.Write(m_instanceID);
             binaryWriter.Write(m_name);
 
-
-
             if (m_componentKunTypes == null)
             {
                 binaryWriter.Write((int)-1);
@@ -203,6 +220,8 @@ namespace Utj.UnityChoseKun.Engine
                 for(var i = 0; i < m_componentKunTypes.Length; i++)
                 {
                     binaryWriter.Write((int)m_componentKunTypes[i]);
+                    // write className
+                    binaryWriter.Write(componentKunTypeFullNames[i]);
                 }
             }
 
@@ -236,28 +255,46 @@ namespace Utj.UnityChoseKun.Engine
             m_name = binaryReader.ReadString();
 
             var len = binaryReader.ReadInt32();
-            if(len != -1)
+            if (len != -1)
             {
+                Debug.Log($"---- len: {len},{m_name}");
                 m_componentKunTypes = new ComponentKun.ComponentKunType[len];
-                for(var i = 0; i < len; i++)
+                componentKunTypeFullNames = new string[len];
+                for (var i = 0; i < len; i++)
                 {
                     m_componentKunTypes[i] = (ComponentKun.ComponentKunType)binaryReader.ReadInt32();
+                    //// get class name
+                    componentKunTypeFullNames[i] = binaryReader.ReadString();
                 }
             }
 
             len = binaryReader.ReadInt32();
-            if(len != -1)
+            if (len != -1)
             {
                 m_componentKuns = new ComponentKun[len];
-                for(var i = 0; i < len; i++)
+                for (var i = 0; i < len; i++)
                 {
-                    m_componentKuns[i] = ComponentKun.Instantiate(m_componentKunTypes[i]);
+                    var kunTypeId = m_componentKunTypes[i];
+
+
+                    //continue;
+                    //try intercept 
+                    if (kunTypeId == ComponentKun.ComponentKunType.MonoBehaviour 
+                        && KunTools.TryInstantiateKunType(componentKunTypeFullNames[i], out var kunObj))
+                    {
+                        m_componentKuns[i] = kunObj;
+                    }
+                    else
+                    {
+                        m_componentKuns[i] = ComponentKun.Instantiate(m_componentKunTypes[i]);
+                    }
+                    Debug.Log($"---- {m_name} Read componentKunType: {kunTypeId},=>{componentKunTypeFullNames[i]}, kunObj {m_componentKuns[i]}");
+
                     m_componentKuns[i].Deserialize(binaryReader);
                     m_componentKuns[i].gameObjectKun = this;
                 }
             }
         }
-
 
         public override bool Equals(object obj)
         {

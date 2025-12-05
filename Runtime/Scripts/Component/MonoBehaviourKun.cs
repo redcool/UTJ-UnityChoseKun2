@@ -6,7 +6,7 @@ namespace Utj.UnityChoseKun.Engine
 {
     
     /// <summary>
-    /// MonoBehaviourKunをSerialize/Deserializeする為のClass
+    /// 用于Serialize/Deserialize MonoBehaviourKun的类
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]

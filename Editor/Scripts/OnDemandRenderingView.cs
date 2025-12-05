@@ -8,12 +8,12 @@ namespace Utj.UnityChoseKun
     [System.Serializable]
     public class OnDemandRenderingView
     {
-        // メンバー変数の定義
+        // 成员变量的定义
 
         [SerializeField] OnDemandRenderingKun mOnDemandRenderingKun;
 
 
-        // プロパティの定義
+        // 属性的定义
 
         OnDemandRenderingKun onDemandRenderingKun
         {
@@ -52,25 +52,25 @@ namespace Utj.UnityChoseKun
         }
 
 
-        // メンバー関数の定義
+        // 成员函数的定义
 
         /// <summary>
-        /// 描画
+        /// 绘制
         /// </summary>
         public void OnGUI()
         {
 #if UNITY_2019_3_OR_NEWER
             scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
             EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField(new GUIContent("effectiveRenderFrameRate", "現在の設定から想定される描画[FPS]"));
+            EditorGUILayout.LabelField(new GUIContent("effectiveRenderFrameRate", "根据当前设置预期的绘制[FPS]"));
             EditorGUILayout.LabelField(onDemandRenderingKun.effectiveRenderFrameRate.ToString() + "[FPS]");
-            //EditorGUILayout.Toggle(new GUIContent("willCurrentFrameRender","現在のフレームが描画が発生するフレームであるか"), onDemandRenderingKun.willCurrentFrameRender);
+            //EditorGUILayout.Toggle(new GUIContent("willCurrentFrameRender","当前帧是否是发生绘制的帧"), onDemandRenderingKun.willCurrentFrameRender);
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space();
 
             EditorGUI.BeginChangeCheck();
-            onDemandRenderingKun.renderFrameInterval = EditorGUILayout.IntSlider(new GUIContent("renderFrameInterval","描画を行うフレーム間隔"), onDemandRenderingKun.renderFrameInterval, 1, 100);
+            onDemandRenderingKun.renderFrameInterval = EditorGUILayout.IntSlider(new GUIContent("renderFrameInterval","进行绘制的帧间隔"), onDemandRenderingKun.renderFrameInterval, 1, 100);
             if (EditorGUI.EndChangeCheck())
             {
                 onDemandRenderingKun.isDirty = true;

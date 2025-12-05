@@ -46,7 +46,7 @@ namespace Utj.UnityChoseKun.Engine
 
         
         /// <summary>
-        /// instanceIDをキーにしてGameObjectを再帰的に検索する
+        /// 以instanceID为键递归搜索GameObject
         /// </summary>
         /// <param name="gameObject"></param>
         /// <param name="instanceID"></param>

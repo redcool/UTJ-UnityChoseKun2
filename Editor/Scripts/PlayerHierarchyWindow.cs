@@ -43,7 +43,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {  
         /// <summary>
-        /// Hierarchyを表示する為のClass
+        /// 用于显示Hierarchy的Class
         /// </summary>        
         public class PlayerHierarchyWindow : EditorWindow
         {
@@ -51,9 +51,9 @@ namespace Utj.UnityChoseKun
             {
                 public static readonly GUIContent TitleContent = new GUIContent("Player Hierarchy", (Texture2D)EditorGUIUtility.Load("d_UnityEditor.SceneHierarchyWindow"));
 #if UNITY_2019_1_OR_NEWER
-                public static readonly GUIContent NetworkMessages = new GUIContent("Reload", (Texture2D)EditorGUIUtility.Load("d_Profiler.NetworkMessages@2x"), "Hierarchyの情報を取得");
+                public static readonly GUIContent NetworkMessages = new GUIContent("Reload", (Texture2D)EditorGUIUtility.Load("d_Profiler.NetworkMessages@2x"), "获取Hierarchy信息");
 #else
-                public static readonly GUIContent NetworkMessages = new GUIContent("Reload","Hierarchyの情報を取得");
+                public static readonly GUIContent NetworkMessages = new GUIContent("Reload","获取Hierarchy信息");
 #endif
                 public static readonly GUIContent Rename = new GUIContent("Rename");
                 public static readonly GUIContent Duplicate = new GUIContent("Duplicate");
@@ -63,7 +63,7 @@ namespace Utj.UnityChoseKun
 
 
             //
-            // delegateの宣言
+            // delegate的声明
             //
             delegate void Task();
             delegate void OnMessageFunc(string json);
@@ -141,10 +141,10 @@ namespace Utj.UnityChoseKun
                 }
             }            
 
-            // 関数の定義
+            // 函数的定义
 
             /// <summary>
-            /// EditorWindowの生成
+            /// EditorWindow的生成
             /// </summary>
             [MenuItem("Window/UTJ/UnityChoseKun/Player Hierarchy")]
             public static void Create()
@@ -165,8 +165,8 @@ namespace Utj.UnityChoseKun
 
             private void Update()
             {
-                // 自身のClassに変更があるとSerializeReferenceを使用していてもホットリロードが出来ない。(m_Instanceがnullになる)
-                // そこでm_Instanceと自身が異なっている場合は変更前のClassである筈なのでこのクラスを閉じる
+                // 即使使用SerializeReference，如果自身Class发生变化也无法进行热重载。(m_Instance变为null)
+                // 因此，如果m_Instance与自身不同，则应该是变更前的Class，所以关闭此类
                 if (m_instance != this)
                 {
                     Close();
@@ -187,7 +187,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// 表示内容のリロード
+            /// 重新加载显示内容
             /// </summary>
             public void Reload()
             {                
@@ -211,7 +211,7 @@ namespace Utj.UnityChoseKun
             {                
                 m_treeViewState = new TreeViewState();                
                 m_hierarchyTreeView = new HierarchyTreeView(m_treeViewState);
-                // Reloadの前にSearchFieldを生成する必要がある
+                // 必须在Reload之前生成SearchField
                 m_searchField = new SearchField();
                 m_searchField.downOrUpArrowKeyPressed += hierarchyTreeView.SetFocusAndEnsureSelectedItem;
                 Reload();
@@ -236,7 +236,7 @@ namespace Utj.UnityChoseKun
                 var evt = Event.current;
                 if (evt.type == EventType.ContextClick)
                 {
-                    // MouseがWindow無いに入っていればMenuを表示する                    
+                    // 如果Mouse在Window内则显示Menu                    
 #if UNITY_2019_1_OR_NEWER
                     if (Instance.rootVisualElement.localBound.Contains(evt.mousePosition))
 #else
@@ -353,7 +353,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// Create Primitiveの共通関数
+            /// Create Primitive的通用函数
             /// </summary>
             /// <param name="messageID"></param>
             /// <param name="instanceID"></param>

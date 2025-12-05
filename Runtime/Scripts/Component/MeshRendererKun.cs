@@ -7,7 +7,7 @@ namespace Utj.UnityChoseKun.Engine
 {
 
     /// <summary>
-    /// MeshRendererをSerialize/Deserializeする為のClass
+    /// 用于Serialize/Deserialize MeshRenderer的类
     /// </summary>
     [System.Serializable]
     [StructLayout(LayoutKind.Sequential, Pack = 4, CharSet = CharSet.Ansi)]
@@ -22,10 +22,10 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// Componentを書き戻す
+        /// 写回到Component
         /// </summary>
-        /// <param name="component">書き戻すComponent</param>
-        /// <returns>結果 true : 下記戻した false : 書き戻す必要がなかった</returns>
+        /// <param name="component">要写回的Component</param>
+        /// <returns>结果 true : 执行了写回 false : 不需要写回</returns>
         public override bool WriteBack(Component component){
             if(base.WriteBack(component)){
                 return true;

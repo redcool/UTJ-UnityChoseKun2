@@ -33,7 +33,7 @@ namespace Utj.UnityChoseKun.Editor
     using Utj.UnityChoseKun.Editor.Rendering.Universal;
 
     /// <summary>
-    /// UnityChoseKunのEditorWindow
+    /// UnityChoseKun的EditorWindow
     /// </summary>   
     public class UnityChoseKunEditorWindow : RemoteConnectEditorWindow
     {
@@ -67,7 +67,7 @@ namespace Utj.UnityChoseKun.Editor
             { "UnityEngine.Texture",     TexturesView.instance.OnGUI},
             { "UnityEngine.Time",        TimeView.instance.OnGUI},
             { "UnityEngine.Profiling.Profiler",    ProfilerView.instance.OnGUI},
-            // 機能をここに追加していく                                              
+            // 在此处添加功能                                              
         };
 
         static readonly Dictionary<UnityChoseKun.MessageID, OnMessageFunc> onMessageFuncDict = new Dictionary<UnityChoseKun.MessageID, OnMessageFunc>()
@@ -129,8 +129,8 @@ namespace Utj.UnityChoseKun.Editor
 
         private void Update()
         {
-            // 自身のClassに変更があるとSerializeReferenceを使用していてもホットリロードが出来ない。(m_Instanceがnullになる)
-            // そこでm_Instanceと自身が異なっている場合は変更前のClassである筈なのでこのクラスを閉じる
+            // 即使使用SerializeReference，如果自身Class发生变化也无法进行热重载。(m_Instance变为null)
+            // 因此，如果m_Instance与自身不同，则应该是变更前的Class，所以关闭此类
             if (m_Instance != this)
             {
                 Close();

@@ -7,7 +7,10 @@ using UnityEditor;
 namespace Utj.UnityChoseKun
 {
     using Engine;
-
+    using PowerUtilities.UTJ;
+    using System;
+    using System.Linq;
+    using System.Reflection;
 
     namespace Editor
     {
@@ -185,8 +188,10 @@ namespace Utj.UnityChoseKun
                     m_selectGameObujectKunID = gameObjectKun.instanceID;
                     for (var i = 0; i < gameObjectKun.componentKuns.Length; i++)
                     {
-                        var type = ComponentView.GetComponentViewSyetemType(gameObjectKun.componentKunTypes[i]);
-                        var componentView = System.Activator.CreateInstance(type) as ComponentView;
+                        var compKun = gameObjectKun.componentKuns[i];
+                        var viewType = KunTools.GetKunViewType(compKun.GetType()) ?? ComponentView.GetComponentViewSyetemType(gameObjectKun.componentKunTypes[i]);
+
+                        var componentView = System.Activator.CreateInstance(viewType) as ComponentView;
                         componentView.SetComponentKun(gameObjectKun.componentKuns[i]);
                         componentViews.Add(componentView);
                     }
@@ -196,7 +201,6 @@ namespace Utj.UnityChoseKun
                     m_selectGameObujectKunID = -1;
                 }
             }
-
 
             public void OnGUI()
             {

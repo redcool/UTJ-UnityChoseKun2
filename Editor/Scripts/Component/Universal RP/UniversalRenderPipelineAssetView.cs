@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -11,7 +11,7 @@ using UnityEditorInternal;
 namespace Utj.UnityChoseKun
 {
     using Engine.Rendering.Universal;
-
+    using UTJ.UnityChoseKun;
 
     namespace Editor 
     {
@@ -87,6 +87,7 @@ namespace Utj.UnityChoseKun
                     bool mShadowFoldout;
                     bool mPostProcessingFoldout;
 
+                    ScriptableRendererDataView rendererDataView;
 
                     public bool DrawContent(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
@@ -128,12 +129,26 @@ namespace Utj.UnityChoseKun
                             GUI.Box(rect, "");
                             for (var i = 0; i < universalRenderPipelineAssetKun.rendererDataList.Length; i++)
                             {
-                                var label = string.Format("{0}:{1} (Universal Renderer Data)", i, universalRenderPipelineAssetKun.rendererDataList[i].name);
+                                var rendererData = universalRenderPipelineAssetKun.rendererDataList[i];
+                                var label = string.Format("{0}:{1} (Universal Renderer Data)", i, rendererData.name);
                                 if (i == universalRenderPipelineAssetKun.defaultRendererIndex)
                                 {
                                     label += " <color=#008800ff><b>[Default]</b></color>";
                                 }
-                                EditorGUILayout.LabelField(label,EditorGUITools.RichTextLabel);
+                                //EditorGUILayout.LabelField(label,EditorGUITools.RichTextLabel);
+
+                                EditorStyles.foldout.richText = true;
+                                rendererData.isFolded = EditorGUITools.Foldout(rendererData.isFolded, label);
+                                if(rendererData.isFolded)
+                                {
+                                    if (rendererDataView == null)
+                                    {
+                                        rendererDataView = new ScriptableRendererDataView();
+                                    }
+                                    EditorGUI.indentLevel++;
+                                    rendererDataView.Draw(rendererData);
+                                    EditorGUI.indentLevel--;
+                                }
                             }
                             EditorGUILayout.EndVertical();
                             EditorGUI.indentLevel--;

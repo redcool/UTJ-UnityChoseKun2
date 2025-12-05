@@ -1,9 +1,12 @@
 {
     "name": "UTJ.UnityChoseKun.Editor",
+    "rootNamespace": "",
     "references": [
         "GUID:d70eed40b78610b4aab3604b3ddf9304",
         "GUID:0e80379a029da2e44b192fcaf767e3af",
-        "GUID:fea82b92eb7ce2f40a863ea006b625ba"
+        "GUID:fea82b92eb7ce2f40a863ea006b625ba",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:c579267770062bf448e75eb160330b7f"
     ],
     "includePlatforms": [
         "Editor"

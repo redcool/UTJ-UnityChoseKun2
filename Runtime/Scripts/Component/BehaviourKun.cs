@@ -7,14 +7,14 @@ namespace Utj.UnityChoseKun.Engine
 {
 
     /// <summary>
-    /// Behaviourをシリアライズ・デシリアライズする為のClass
+    /// 用于序列化/反序列化Behaviour的Class
     /// Programed by Katsumasa.Kimura
     /// </summary>
     [System.Serializable]
     public class BehaviourKun : ComponentKun
     {
         /// <summary>
-        /// 有効/無効
+        /// 启用/禁用
         /// </summary>
         [SerializeField] bool m_enabled;
         
@@ -26,15 +26,15 @@ namespace Utj.UnityChoseKun.Engine
         
         
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
         public BehaviourKun():this(null){}
         
         
         /// <summary>
-        /// コンストラクタ
+        /// 构造函数
         /// </summary>
-        /// <param name="component">Beviourオブジェクト</param>
+        /// <param name="component">Behaviour对象</param>
         public BehaviourKun(Component component):base(component)
         {
             componentKunType = ComponentKunType.Behaviour;
@@ -47,10 +47,10 @@ namespace Utj.UnityChoseKun.Engine
 
 
         /// <summary>
-        /// Behaviourに内容を書き戻す
+        /// 将内容写回到Behaviour
         /// </summary>
-        /// <param name="component">書き戻すBehaviour</param>
-        /// <returns>結果 true:書き戻しを行った</returns>
+        /// <param name="component">要写回的Behaviour</param>
+        /// <returns>结果 true:执行了写回</returns>
         public override bool WriteBack(Component component)
         {
             if(base.WriteBack(component))

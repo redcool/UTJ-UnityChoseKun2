@@ -1,4 +1,4 @@
-using System.IO;
+ï»¿using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -58,8 +58,8 @@ namespace Utj.UnityChoseKun.Engine.Rendering
             pi = t.GetProperty("displayName", BindingFlags.Instance | BindingFlags.Public);
             m_DisplayName = (string)pi.GetValue(scriptableObject);
 
-            // parameters‚ÍSystem.Collections.ObjectModel.ReadOnlyCollection<VolumeParameter>Œ^‚Å‚ ‚éˆ×A
-            // VolumeParameterŒ^‚ªg‚¦‚È‚¢ê‡‚ÍAIEnumerable‚ÅƒLƒƒƒXƒg‚·‚é‚µ‚©•û–@‚ª‚È‚¢
+            // parameterså¼System.Collections.ObjectModel.ReadOnlyCollection<VolumeParameter>å®†å±åå‚å Šä¸„
+            // VolumeParameterå®†å‘å·ŠåŠå´å„å¿œå´Œå¼ä¸„IEnumerableå±åƒ‰å„åƒ—åƒ©å¡å‚åŸåæ›½æœ„å‘å´å„
             pi = t.GetProperty("parameters", BindingFlags.Instance | BindingFlags.Public);
             var parameters = (IEnumerable)pi.GetValue(scriptableObject);
             var len = 0;

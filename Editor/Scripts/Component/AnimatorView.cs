@@ -10,7 +10,7 @@ namespace Utj.UnityChoseKun
     namespace Editor
     {
         /// <summary>
-        /// Animatorを表示する為のClass
+        /// 用于显示Animator的Class
         /// Programed by Katsuma.Kimura
         /// </summary>
         public class AnimatorView : BehaviourView
@@ -36,7 +36,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// コンストラクタ
+            /// 构造函数
             /// </summary>
             public AnimatorView() : base()
             {
@@ -46,7 +46,7 @@ namespace Utj.UnityChoseKun
 
 
             /// <summary>
-            /// 描画処理
+            /// 绘制处理
             /// </summary>
             /// <returns></returns>
             public override bool OnGUI()

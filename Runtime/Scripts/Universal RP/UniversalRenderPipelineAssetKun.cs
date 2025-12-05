@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.IO;
 using System.Reflection;
 using UnityEngine;
@@ -963,8 +963,8 @@ namespace Utj.UnityChoseKun.Engine.Rendering.Universal
 
         public override void WriteBack(RenderPipelineAsset renderPipelineAsset)
         {
-            // SetValue‚ğs‚¤Û‚Éˆø”‚ÌŒ^‚ğƒŠƒtƒŒƒNƒVƒ‡ƒ“‘¤‚É‡‚í‚¹‚é•K—v‚ª‚ ‚é‚ªASystem.Convert.ChangeType‚Å—áŠO‚ªƒXƒ[‚³‚ê‚éB
-            // C#ƒƒJƒ‰ƒ“
+            // SetValueå‚ªå³´å†åµºåµå ·æ‚¢åºå®†å‚ªå„•åƒ¼å„—åƒ‹åƒ”å„‘å„æ‡åµå´Œå‚¢å£å‚æ˜æ¢«å‘åå‚å‘ä¸„System.Convert.ChangeTypeå±æ¤ºå¥œå‘åƒ—å„˜ä¹•åå‚Ÿå‚ä¸…
+            // C#å„šåƒ‡å„”å„
             
 
 
