@@ -6,16 +6,11 @@ using System.IO;
 using UnityEngine;
 using Utj.UnityChoseKun.Engine;
 
-[MonoBehaviourKun(kunType = typeof(TestMonoKun))]
+[MonoBehaviourKun(typeof(TestMonoKun))]
 public class TestMono : MonoBehaviour
 {
     public string path = "";
     string lastPath = "";
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     
     void Update()
     {

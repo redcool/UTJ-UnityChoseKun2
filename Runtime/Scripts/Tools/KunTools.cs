@@ -18,16 +18,16 @@ namespace PowerUtilities.UTJ
         public readonly static Dictionary<Type, Type> compKunViewTypeDict = new();
 
         /// <summary>
-        /// Find all Type has MonoBehaviourViewAttribute and fill them in dict{kunType,kunViewType}
+        /// Find all Type has MonoBehaviourKunAttribute and fill them in dict{kunType,kunViewType}
         /// </summary>
         /// <param name="dict"></param>
         public static void SetupComponentKunViewTypeDict(Dictionary<Type, Type> dict)
         {
-            var viewTypes = ReflectionTools.GetTypesHasAttribute<MonoBehaviourViewAttribute>(true);
+            var viewTypes = ReflectionTools.GetTypesHasAttribute<MonoBehaviourKunAttribute>(true);
 
             foreach (var viewType in viewTypes)
             {
-                var kunType = viewType.GetCustomAttribute<MonoBehaviourViewAttribute>()?.kunType;
+                var kunType = viewType.GetCustomAttribute<MonoBehaviourKunAttribute>()?.kunType;
                 dict[kunType] = viewType;
             }
         }

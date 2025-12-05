@@ -127,6 +127,7 @@ namespace Utj.UnityChoseKun.Engine
                 if (kunType != null)
                 {
                     componentKuns[i] = (ComponentKun)Activator.CreateInstance(kunType, (object)component);
+                    componentKuns[i].instanceID = component.GetInstanceID();
                     componentKunTypeFullNames[i] = kunType.FullName;
                 }
 
@@ -257,7 +258,7 @@ namespace Utj.UnityChoseKun.Engine
             var len = binaryReader.ReadInt32();
             if (len != -1)
             {
-                Debug.Log($"---- len: {len},{m_name}");
+                //Debug.Log($"---- len: {len},{m_name}");
                 m_componentKunTypes = new ComponentKun.ComponentKunType[len];
                 componentKunTypeFullNames = new string[len];
                 for (var i = 0; i < len; i++)
@@ -288,7 +289,7 @@ namespace Utj.UnityChoseKun.Engine
                     {
                         m_componentKuns[i] = ComponentKun.Instantiate(m_componentKunTypes[i]);
                     }
-                    Debug.Log($"---- {m_name} Read componentKunType: {kunTypeId},=>{componentKunTypeFullNames[i]}, kunObj {m_componentKuns[i]}");
+                    //Debug.Log($"---- {m_name} Read componentKunType: {kunTypeId},=>{componentKunTypeFullNames[i]}, kunObj {m_componentKuns[i]}");
 
                     m_componentKuns[i].Deserialize(binaryReader);
                     m_componentKuns[i].gameObjectKun = this;

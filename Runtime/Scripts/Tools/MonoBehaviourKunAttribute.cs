@@ -7,28 +7,20 @@ using Utj.UnityChoseKun.Engine;
 
 namespace PowerUtilities.UTJ
 {
+    /// <summary>
+    /// Mark this class wrapper class
+    /// </summary>
     [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public class MonoBehaviourKunAttribute : Attribute
-    {
-        /// <summary>
-        /// Component wrapper type
-        /// </summary>
-        public Type kunType;
-
-    }
-    [AttributeUsage(AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    public class MonoBehaviourViewAttribute : Attribute
     {
         /// <summary>
         /// component wrapper type
         /// </summary>
         public Type kunType;
-        public MonoBehaviourViewAttribute(Type kunType)
+        public MonoBehaviourKunAttribute(Type kunType)
         {
             this.kunType = kunType;
         }
     }
-    public class TestMAttribute : Attribute
-    {
-    }
+
 }

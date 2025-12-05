@@ -1,6 +1,4 @@
-﻿using PowerUtilities.UTJ;
-using System;
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 using Utj.UnityChoseKun.Engine;
 
@@ -30,7 +28,11 @@ public class TestMonoKun : MonoBehaviourKun
         base.Deserialize(binaryReader);
         path = binaryReader.ReadString();
     }
-
+    /// <summary>
+    /// write data back to component
+    /// </summary>
+    /// <param name="component"></param>
+    /// <returns></returns>
     public override bool WriteBack(Component component)
     {
         var tm = component as TestMono;

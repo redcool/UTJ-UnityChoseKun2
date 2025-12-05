@@ -66,7 +66,7 @@ namespace Utj.UnityChoseKun{
         
         public int instanceID {
             get {return m_instanceID;}
-            protected set {m_instanceID = value;}
+             set {m_instanceID = value;}
         }
 
 
