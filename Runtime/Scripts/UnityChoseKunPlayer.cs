@@ -26,12 +26,7 @@ using Rendering.Universal;
             {
                 EditorApplication.ExecuteMenuItem(OPEN_PLAYER_HIERARCHY);
             }
-            if (GUILayout.Button("Test"))
-            {
-                var t = KunTools.GetKunViewType(typeof(TestMonoKun));
-                    ;
-                    Debug.Log(t);
-            }
+
         }
     }
 #endif

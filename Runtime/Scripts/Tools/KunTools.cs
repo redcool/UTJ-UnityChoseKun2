@@ -76,7 +76,7 @@ namespace PowerUtilities.UTJ
 
             var type = typeof(ComponentKun).Assembly.GetType(kunTypeFullName);
             if (type == null)
-                type = ReflectionTools.GetTypeFromAppDomain(kunTypeFullName);
+                type = ReflectionTools.GetAppDomainType(kunTypeFullName);
             if (type != null)
                 kunObj = Activator.CreateInstance(type) as ComponentKun;
             return type != null;

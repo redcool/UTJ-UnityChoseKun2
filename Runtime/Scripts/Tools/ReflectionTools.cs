@@ -1,5 +1,4 @@
-﻿using PowerUtilities.UTJ;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +17,12 @@ namespace PowerUtilities.UTJ
 
 
         /// <summary>
-        /// type's methods has attribute
+        /// type's fields has attribute
         /// 
         /// {type : [methodInfos]}
         /// </summary>
-        static Dictionary<Type, MethodInfo[]> typeHasAttributeMethodsDict = new Dictionary<Type, MethodInfo[]>();
+        static Dictionary<Type, MethodInfo[]> typeHasAttributeMethodsDict = new ();
+        static Dictionary<Type, FieldInfo[]> typeHasAttributeFieldsDict = new ();
 
         /// <summary>
         /// types has attributeType
@@ -46,6 +46,7 @@ namespace PowerUtilities.UTJ
         {
             typeHasAttributeMethodsDict.Clear();
             attributeTypesDict.Clear();
+            typeHasAttributeFieldsDict.Clear();
         }
 
         /// <summary>
@@ -60,13 +61,13 @@ namespace PowerUtilities.UTJ
             if (methodInfo == null)
                 methodInfo = type.GetMethod(methodName, flags);
         }
-        public static void GetMethod(this Type type, ref MethodInfo methodInfo, string methodName, BindingFlags flags, Binder binder, Type[] argTypes, ParameterModifier[] mods)
+        public static void GetMethod(this Type type, ref MethodInfo methodInfo, string methodName, BindingFlags flags,Binder binder, Type[] argTypes, ParameterModifier[] mods)
         {
             if (methodInfo == null)
                 methodInfo = type.GetMethod(methodName, flags, binder, argTypes, mods);
         }
         /// <summary>
-        /// Get type's methods have attribute<T> with cached
+        /// Get type's fields have attribute<T> 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="type"></param>
@@ -82,7 +83,23 @@ namespace PowerUtilities.UTJ
             typeHasAttributeMethodsDict[type] = methodArr;
             return methodArr;
         }
+        /// <summary>
+        /// Get type's fields have attribute<T>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static FieldInfo[] GetFieldsHasCustomAttribute<T>(Type type) where T : Attribute
+        {
+            if (!typeHasAttributeFieldsDict.TryGetValue(type, out var fields))
+            {
+                fields = type.GetFields(callBindings);
+            }
 
+            var fieldArr = fields.Where(m => m.GetCustomAttribute<T>() != null).ToArray();
+            typeHasAttributeFieldsDict[type] = fieldArr;
+            return fieldArr;
+        }
         /// <summary>
         /// Get types has attribute<T> in T's assembly 
         /// </summary>
@@ -96,7 +113,7 @@ namespace PowerUtilities.UTJ
             {
                 if (isInAppDomain)
                 {
-                    typeArr = GetAppDomainTypesDerivedFrom<Type>(t => t.GetCustomAttribute<T>() != null)
+                    typeArr = GetAppDomainTypes<Type>(t => t.GetCustomAttribute<T>() != null)
                         .ToArray();
                 }
                 else
@@ -110,9 +127,9 @@ namespace PowerUtilities.UTJ
         }
 
         /// <summary>
-        /// Get methodInfo[] from all types
+        /// Get methodInfo[] has attribute T from appDomain assemblies
         /// 
-        /// first time cost 11ms
+        /// first time Slow
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
@@ -122,7 +139,7 @@ namespace PowerUtilities.UTJ
             if (!typeHasAttributeMethodsDict.TryGetValue(attrType, out var methods))
             {
                 methods = AppDomain.CurrentDomain.GetAssemblies()
-                .Where(dll => IsContains(dll.FullName))
+                .Where(dll => IsContains(dllStartWithNames,dll.FullName))
                 .SelectMany(dll => dll.GetTypes())
                 .SelectMany(t => GetMethodsHasCustomAttribute<T>(t))
                 .Where(ms => ms != null)
@@ -131,57 +148,50 @@ namespace PowerUtilities.UTJ
             }
 
             return typeHasAttributeMethodsDict[attrType] = methods;
-            //==========
-            bool IsContains(string fullname)
-            {
-                if (dllStartWithNames.Length == 0)
-                    return true;
+        }
+        static bool IsContains(string[] dllStartWithNames,string dllFullname)
+        {
+            if (dllStartWithNames.Length == 0)
+                return true;
 
-                foreach (var name in dllStartWithNames)
-                {
-                    if (fullname.StartsWith(name))
-                        return true;
-                }
-                return false;
+            foreach (var name in dllStartWithNames)
+            {
+                if (dllFullname.StartsWith(name))
+                    return true;
             }
+            return false;
         }
         /// <summary>
-        /// Search Types from (T)'s assembly or all current domain assemblies
+        /// Get FieldInfos has attribute T from appDomain assemblies
+        /// First time Slow
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="predication"></param>
-        /// <param name="isIncludeDomain"></param>
+        /// <param name="dllStartWithNames"></param>
         /// <returns></returns>
-        public static IEnumerable<Type> GetTypesDerivedFrom<T>(Func<Type, bool> predication, bool isIncludeDomain = false)
+        public static FieldInfo[] GetFieldsHasAttribute<T>(params string[] dllStartWithNames) where T : Attribute
         {
-            if (predication == null)
-                return Enumerable.Empty<Type>();
+            var attrType = typeof(T);
+            if (!typeHasAttributeFieldsDict.TryGetValue(attrType, out var fields))
+            {
+                fields = AppDomain.CurrentDomain.GetAssemblies()
+                .Where(dll => IsContains(dllStartWithNames, dll.FullName))
+                .SelectMany(dll => dll.GetTypes())
+                .SelectMany(t => GetFieldsHasCustomAttribute<T>(t))
+                .Where(ms => ms != null)
+                .ToArray()
+                ;
+            }
 
-            IEnumerable<Type> types = typeof(T).Assembly.GetTypes();
-            if (isIncludeDomain)
-                types = GetAppDomainTypesDerivedFrom<T>();
-
-            return types.Where(predication);
+            return typeHasAttributeFieldsDict[attrType] = fields;
         }
 
-        public static IEnumerable<Type> GetTypesDerivedFrom<T>(bool isIncludeDomain = false)
-        {
-            var tType = typeof(T);
-            return GetTypesDerivedFrom<T>(t => t.BaseType != null && t.BaseType == tType);
-        }
-
-        public static IEnumerable<Type> GetAppDomainTypesDerivedFrom<T>()
-        {
-            var tType = typeof(T);
-            return GetAppDomainTypesDerivedFrom<T>(t => t.BaseType != null && t.BaseType == tType);
-        }
         /// <summary>
         /// Search Types from currentDomain assemblies
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public static IEnumerable<Type> GetAppDomainTypesDerivedFrom<T>(Func<Type, bool> predicate)
+        public static IEnumerable<Type> GetAppDomainTypes<T>(Func<Type, bool> predicate)
         {
             if (predicate == null)
                 return Enumerable.Empty<Type>();
@@ -191,9 +201,38 @@ namespace PowerUtilities.UTJ
             ;
         }
 
-        public static Type GetTypeFromAppDomain(string typeName)
+        public static Type GetAppDomainType(string typeFullName)
         {
-            return GetAppDomainTypesDerivedFrom<Type>(type => type.FullName == typeName).FirstOrDefault();
+            return GetAppDomainTypes<Type>(type => type.FullName == typeFullName).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Get all types passed by predication from current Assembly or currentDomain assemblies
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="predication"></param>
+        /// <param name="isIncludeDomain"></param>
+        /// <returns></returns>
+        public static IEnumerable<Type> GetTypes<T>(Func<Type, bool> predication, bool isIncludeDomain = false)
+        {
+            if (predication == null)
+                return Enumerable.Empty<Type>();
+
+            if (isIncludeDomain)
+                return GetAppDomainTypes<T>(predication);
+            else
+                return Assembly.GetCallingAssembly().GetTypes().Where(predication);
+        }
+        /// <summary>
+        /// Get all types derived from T from current Assembly or currentDomain assemblies
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="isIncludeDomain"> find in currentDomain assemblies</param>
+        /// <returns></returns>
+        public static IEnumerable<Type> GetTypesDerivedFrom<T>(bool isIncludeDomain = false)
+        {
+            var tType = typeof(T);
+            return GetTypes<T>(t => t.BaseType != null && t.BaseType == tType, isIncludeDomain);
         }
         /// <summary>
         /// Is type implements interfaceType?
@@ -225,7 +264,7 @@ namespace PowerUtilities.UTJ
         /// <param name="type"></param>
         /// <param name="targetType"></param>
         /// <returns></returns>
-        public static bool IsAssignableTo(this Type type, Type targetType)
+        public static bool IsAssignableTo(this Type type,Type targetType)
         {
             return targetType.IsAssignableFrom(type);
         }
@@ -298,11 +337,11 @@ namespace PowerUtilities.UTJ
         /// <returns></returns>
         public static T GetPropertyValue<T>(this Type type, object caller, string propertyName, BindingFlags flags = instanceBindings)
         {
-            var obj = GetPropertyValue(type, caller, propertyName, flags);
+            var obj = GetPropertyValue(type,caller, propertyName, flags);
             return obj != null ? (T)obj : default;
         }
 
-        public static object GetPropertyValue(this Type type, object caller, string propertyName, BindingFlags flags = instanceBindings)
+        public static object GetPropertyValue(this Type type,object caller,string propertyName,BindingFlags flags = instanceBindings)
         {
             var prop = type.GetProperty(propertyName, flags);
             return prop != null ? prop.GetValue(caller) : default;
@@ -344,7 +383,7 @@ namespace PowerUtilities.UTJ
             return instance;
         }
 
-        public static FieldInfo GetFieldInfoHierarchy(this object instance, string fieldExpress, out object fieldInst)
+        public static FieldInfo GetFieldInfoHierarchy(this object instance, string fieldExpress,out object fieldInst)
         {
             fieldInst = null;
 
@@ -356,7 +395,7 @@ namespace PowerUtilities.UTJ
             foreach (var fieldName in fieldNames)
             {
                 // keep last
-                fieldInst = instance;
+                fieldInst  = instance;
 
                 field = instType.GetField(fieldName, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
                 if (field == null)
@@ -422,7 +461,7 @@ namespace PowerUtilities.UTJ
             return type.GetMethod(name, instanceBindings, null, argTypes, null)?.Invoke(caller, args);
         }
 
-        public static object GetPropertyValue(this Type type, string name, object caller, object[] args)
+        public static object GetPropertyValue(this Type type, string name,object caller, object[] args)
         {
             return type.GetProperty(name).GetValue(caller, args);
         }
@@ -436,26 +475,26 @@ namespace PowerUtilities.UTJ
         /// <param name="caller"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static object GetMemberValue(this Type type, string memberName, object caller, params object[] args)
+        public static object GetMemberValue(this Type type,string memberName,object caller, params object[] args)
         {
             var m = type.GetMember(memberName, instanceBindings).FirstOrDefault();
-            if (m == null)
+            if(m == null)
                 return default;
 
             if (args == null || args.Length == 0)
                 args = Type.EmptyTypes;
 
-            if (m is PropertyInfo propertyInfo)
-                return propertyInfo.GetValue(caller, args);
+            if(m is PropertyInfo propertyInfo)
+                return propertyInfo.GetValue(caller,args);
             if (m is FieldInfo fieldInfo)
                 return fieldInfo.GetValue(caller);
-            if (m is MethodInfo methodInfo)
-                return methodInfo.Invoke(caller, args);
+            if(m is MethodInfo methodInfo)
+                return methodInfo.Invoke(caller,args);
 
             return default;
         }
 
-        public static T GetMemberValue<T>(this Type type, string memberName, object caller, params object[] args)
+        public static T GetMemberValue<T>(this Type type, string memberName, object caller,params object[] args)
         {
             return (T)GetMemberValue(type, memberName, caller, args);
         }
@@ -467,13 +506,13 @@ namespace PowerUtilities.UTJ
         /// <param name="memberName"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public static T GetMemberValue<T>(this object caller, string memberName, object[] args)
+        public static T GetMemberValue<T>(this object caller,string memberName, object[] args)
         {
             var type = caller.GetType();
             return GetMemberValue<T>(type, memberName, caller, args);
         }
 
-        public static void SetMemberValue(this Type type, string memberName, object caller, object[] args)
+        public static void SetMemberValue(this Type type,string memberName,object caller, object[] args)
         {
             var m = type.GetMember(memberName, instanceBindings).FirstOrDefault();
             if (m == null)
@@ -482,8 +521,8 @@ namespace PowerUtilities.UTJ
             if (m is PropertyInfo propertyInfo)
                 propertyInfo.SetValue(caller, args);
             if (m is FieldInfo fieldInfo)
-                fieldInfo.SetValue(caller, args);
-
+                fieldInfo.SetValue(caller,args);
+            
         }
 
         /// <summary>
@@ -493,7 +532,7 @@ namespace PowerUtilities.UTJ
         /// <param name="writeTarget">write field to this</param>
         /// <param name="bindingFlags">filed binding flags</param>
         /// <param name="onSetValue"> onSetValue: (readValue, writeValue), result default result is readValue </param>
-        public static void CopyFieldInfoValues(object readTarget, object writeTarget, BindingFlags bindingFlags = instanceBindings, Func<object, object, object> onSetValue = null)
+        public static void CopyFieldInfoValues(object readTarget,object writeTarget,BindingFlags bindingFlags = instanceBindings,Func<object, object,object> onSetValue = null)
         {
             var readType = readTarget.GetType();
             var writeType = writeTarget.GetType();
@@ -509,13 +548,13 @@ namespace PowerUtilities.UTJ
 
                 //var writeField = Array.Find(writeTargetFields, fieldInfo => fieldInfo.Name == readField.Name);
                 //1 insert key
-                if (!writeTargetFieldDict.ContainsKey(readField.Name))
+                if(!writeTargetFieldDict.ContainsKey(readField.Name))
                 {
                     writeTargetFieldDict.Add(readField.Name, writeType.GetField(readField.Name));
                 }
 
                 //2 get key
-                if (!writeTargetFieldDict.TryGetValue(readField.Name, out var writeField) || writeField == null)
+                if(!writeTargetFieldDict.TryGetValue(readField.Name,out var writeField) || writeField == null)
                     continue;
 
                 //3 set value

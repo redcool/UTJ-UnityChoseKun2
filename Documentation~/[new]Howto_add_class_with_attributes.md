@@ -90,23 +90,9 @@ using Utj.UnityChoseKun.Engine;
 [MonoBehaviourView(typeof(TestMonoKun))]
 public class TestMonoView : MonoBehaviourView
 {
-    public TestMonoKun testMonoKun
-    {
-        get { return behaviourKun as TestMonoKun; }
-        set { behaviourKun = value; }
-    }
-
-    public override void SetComponentKun(ComponentKun componentKun)
-    {
-        testMonoKun = (TestMonoKun)componentKun;
-    }
-    public override ComponentKun GetComponentKun()
-    {
-        return testMonoKun;
-    }
-
     public override bool OnGUI()
     {
+        var testMonoKun = behaviourKun as TestMonoKun;
         base.OnGUI();
         testMonoKun.path = EditorGUILayout.TextField(testMonoKun.path);
         return true;
