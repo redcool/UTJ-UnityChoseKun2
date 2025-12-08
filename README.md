@@ -2,399 +2,283 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/katsumasa/UnityChoseKun?style=plastic)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/katsumasa/UnityChoseKun?style=plastic)
+## Introduction
 
-[English Ver. README](Documentation~/UnityChoseKun.md)
+Have you ever experienced time being wasted to complete a build every time for a small setting changed in the GamObject? This tool not only allows to make changes to your GameObject without rebuilding every time, but also can while the actual device is running.
 
-## 概要
+## Overview
 
-Unityで開発したアプリを実機上で実行している時に、GameObjectの内容をほんの少しだけ変更したいだけなのに、ビルド完了迄長時間待たされることで、貴重な開発時間を無駄にして悔しい思いをした事は無いでしょうか。
-UnityChoseKunは再ビルドを行うこと無く、UnityEditor上で開発機で実行中のアプリの調整を行う為のEditor拡張です。
+Tool used to control application built with Unity running on a real device (Switch,Android,iOS,etc) from UnityEditor.
 
-<img width="852" alt="UnityChoseKunDemo02" src="https://user-images.githubusercontent.com/29646672/137236126-f7b9c064-3dcc-41d5-9ce6-9f9175d9d315.gif">
+Can adjust the component inside the application that are running on the actual device:
+<img width="800" alt="UnityChoseKunDemo02" src="https://user-images.githubusercontent.com/29646672/137236126-f7b9c064-3dcc-41d5-9ce6-9f9175d9d315.gif">
 
-## Demo
+Could show UnityEditor from the device's screen:
+<img width="800" alt="UnityChoseKunDemo03" src="https://user-images.githubusercontent.com/29646672/137236618-7539f774-b200-45e9-a4d5-87e7ceb6b208.gif">
 
-https://user-images.githubusercontent.com/29646672/220570479-85ea8eff-75cf-401b-92bb-4cb5ae4cd205.mp4
+## What you can do with this project
 
+The following tasks can be performed in the UnityEditor
+- Display the screen rendered on the actual device (PlayerView).
+- Display hierarchy of the scene being played in the actual device (Hierarchy View)
+- Reflect the changes made to the selected GameObject's component to the actual device (Inspector View).
 
-## このプロジェクトで出来ること
+## Operating Environment
 
-- 実機で再生されているSceneをHierarchy形式で表示(Player Hierarchy)
-- GameObjectに含まれるComponentの内容等、アプリケーションの内容を編集し実機側へ反映させる。(Player Inspector)
-
-## 動作環境
-
-下記の内容で動作の確認済を行っています。
-
-- Unityのバージョン
-  - Unity2018.4.26f1 (一部、機能制限あり)
+- Unity version
+  - Unity2018.4.26f1 (Some functions are limited)
   - Unity2019.4.40f1
   - Unity2020.2.2f1
   - Unity2020.3.27f1
   - Unity2021.2.15f1
   - Unity2021.3.1f1
-  - Unity2022.3.43f1
-- プラットフォーム
+  - Unity2022.3.0f1
+- Platform
   - Android
     - Pixel3XL
     - Pixel4XL
   - iOS
     - iPhone 6S
 
-Universal RPに関しては下記の組み合わせで動作確認を行っています。
+## Adjustable Components
+You can make adjustments on the following components
+- [Application](https://docs.unity3d.com/ScriptReference/Application.html)
+- [OnDemandRendering](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/Rendering.OnDemandRendering.html)
+- [QualitySettings](https://docs.unity3d.com/ScriptReference/QualitySettings.html)
+- [Screen](https://docs.unity3d.com/ScriptReference/Screen.html)
+- [Shader](https://docs.unity3d.com/ScriptReference/Shader.html)
+- [Sprite](https://docs.unity3d.com/2019.4/Documentation/ScriptReference/SpriteRenderer-sprite.html)
+- [SystemInfo](https://docs.unity3d.com/ScriptReference/SystemInfo.html)
+- [ScalableBufferManager](https://docs.unity3d.com/ScriptReference/ScalableBufferManager.html)
+- [SortingLayer](https://docs.unity3d.com/ScriptReference/SortingLayer.html)
+- [Texture](https://docs.unity3d.com/ScriptReference/Texture.html)
+- [Time](https://docs.unity3d.com/ScriptReference/Time.html)
+- [Component](https://docs.unity3d.com/ScriptReference/Component.html)
+  - [Animator](https://docs.unity3d.com/ScriptReference/Animator.html)
+  - [Behaviour](https://docs.unity3d.com/ScriptReference/Behaviour.html)
+  - [Bounds](https://docs.unity3d.com/ScriptReference/Bounds.html)
+  - [Camera](https://docs.unity3d.com/ScriptReference/Camera.html)
+  - [Collider](https://docs.unity3d.com/ScriptReference/Collider.html)
+  - [Light](https://docs.unity3d.com/ScriptReference/Light.html)
+  - [Material](https://docs.unity3d.com/ScriptReference/Material.html)
+  - [Matrix4x4](https://docs.unity3d.com/ScriptReference/Matrix4x4.html)
+  - [MeshRenderer](https://docs.unity3d.com/ScriptReference/MeshRenderer.html)
+  - [MonoBehavior](https://docs.unity3d.com/ScriptReference/MonoBehaviour.html)
+  - [Object](https://docs.unity3d.com/ScriptReference/Object.html)
+  - [ParticleSystem](https://docs.unity3d.com/ScriptReference/ParticleSystem.html)
+  - [PhysicMaterial](https://docs.unity3d.com/ScriptReference/PhysicMaterial.html)
+  - [Quartanion](https://docs.unity3d.com/ScriptReference/Quaternion.html)
+  - [Rect](https://docs.unity3d.com/ScriptReference/Rect.html)
+  - [Renderer](https://docs.unity3d.com/ScriptReference/Renderer.html)
+  - [Resolution](https://docs.unity3d.com/ScriptReference/Resolution.html)
+  - [Rigidbody](https://docs.unity3d.com/ScriptReference/Rigidbody.html)
+  - [SkinnedMeshRenderer](https://docs.unity3d.com/ScriptReference/SkinnedMeshRenderer.html)
+  - [SpriteRenderer](https://docs.unity3d.com/ScriptReference/SpriteRenderer-sprite.html)
+  - [Transform](https://docs.unity3d.com/ScriptReference/Transform.html)
+  - [Vector2](https://docs.unity3d.com/ScriptReference/Vector2.html)
+  - [Vector3](https://docs.unity3d.com/ScriptReference/Vector3.html)
+  - [Vector4](https://docs.unity3d.com/ScriptReference/Vector4.html)
 
-| Unity       | URP    |
-|:-----------:|:------:|
-| 2020.3.27f1 | 10.8.1 |
-| 2021.2.15f1 | 12.1.5 |
-| 2021.3.1f1  | 12.1.5 |
+Here is a step on how to add new component/class:
+[Howto_add_class.md]
+(https://github.com/redcool/UTJ-UnityChoseKun2/blob/main/Documentation~/%5Bnew%5DHowto_add_class_with_attributes.md)
 
-## 対応しているClassについて
+## Caution
 
-- [Application](https://docs.unity3d.com/ja/current/ScriptReference/Application.html)
-- [OnDemandRendering](https://docs.unity3d.com/ja/current/ScriptReference/Rendering.OnDemandRendering.html)
-- [QualitySettings](https://docs.unity3d.com/ja/ScriptReference/QualitySettings.html)
-- [Screen](https://docs.unity3d.com/ja/ScriptReference/Screen.html)
-- [Shader](https://docs.unity3d.com/ja/ScriptReference/Shader.html)
-- [Sprite](https://docs.unity3d.com/ja/current/ScriptReference/SpriteRenderer-sprite.html)
-- [SystemInfo](https://docs.unity3d.com/ja/current/ScriptReference/SystemInfo.html)
-- [ScalableBufferManager](https://docs.unity3d.com/ja/ScriptReference/ScalableBufferManager.html)
-- [SortingLayer](https://docs.unity3d.com/ja/current/ScriptReference/SortingLayer.html)
-- [Texture](https://docs.unity3d.com/ja/ScriptReference/Texture.html)
-- [Time](https://docs.unity3d.com/ja/ScriptReference/Time.html)
-- [Component](docs.unity3d.com/ja/ScriptReference/Component.html)
-  - [Animator](https://docs.unity3d.com/ja/ScriptReference/Animator.html)
-  - AnimationCurve
-  - [Behaviour](https://docs.unity3d.com/ja/current/ScriptReference/Behaviour.html)
-  - [Bounds](https://docs.unity3d.com/ja/current/ScriptReference/Bounds.html)
-  - [Camera](https://docs.unity3d.com/ja/ScriptReference/Camera.html)
-  - [Collider](https://docs.unity3d.com/ja/ScriptReference/Collider.html)
-  - Keyframe
-  - [Light](https://docs.unity3d.com/ja/ScriptReference/Light.html)
-  - LayerMask
-  - [Material](https://docs.unity3d.com/ja/ScriptReference/Material.html)
-  - [Matrix4x4](https://docs.unity3d.com/ja/current/ScriptReference/Matrix4x4.html)
-  - [MeshRenderer](https://docs.unity3d.com/ja/current/ScriptReference/MeshRenderer.html)
-  - [MonoBehavior](https://docs.unity3d.com/ja/ScriptReference/MonoBehaviour.html)
-  - [Object](https://docs.unity3d.com/ja/current/ScriptReference/Object.html)
-  - [ParticleSystem](https://docs.unity3d.com/ja/ScriptReference/ParticleSystem.html)
-  - [PhysicMaterial](https://docs.unity3d.com/ja/ScriptReference/PhysicMaterial.html)
-  - [Quartanion](https://docs.unity3d.com/ja/ScriptReference/Quaternion.html)
-  - [Rect](https://docs.unity3d.com/ja/ScriptReference/Rect.html)
-  - [Renderer](https://docs.unity3d.com/ja/ScriptReference/Renderer.html)
-  - [Resolution](https://docs.unity3d.com/ja/ScriptReference/Resolution.html)
-  - [Rigidbody](https://docs.unity3d.com/ja/ScriptReference/Rigidbody.html)
-  - [SkinnedMeshRenderer](https://docs.unity3d.com/ja/ScriptReference/SkinnedMeshRenderer.html)
-  - [SpriteRenderer](https://docs.unity3d.com/ja/current/ScriptReference/SpriteRenderer.html)
-  - TextureCurve
-  - [Transform](https://docs.unity3d.com/ja/ScriptReference/Transform.html)
-  - [Vector2](https://docs.unity3d.com/ja/ScriptReference/Vector2.html)
-  - [Vector3](https://docs.unity3d.com/ja/ScriptReference/Vector3.html)
-  - [Vector4](https://docs.unity3d.com/ja/ScriptReference/Vector4.html)
-  - [UI](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/index.html)
-    - [Canvas](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/class-Canvas.html)
-- Render Core Library
-  - Volume
-  - VolumeProfile
-  - VolumeComponent
-  - VolumeParameter
-    - [x] BoolParameter
-    - [x] LayerMaskParameter
-    - [x] IntParameter
-    - [x] NoInterpIntParameter
-    - [x] MinIntParameter
-    - [x] NoInterpMinIntParameter
-    - [x] MaxIntParameter
-    - [x] NoInterpMaxIntParameter
-    - [x] ClampedIntParameter
-    - [x] NoInterpClampedIntParameter
-    - [x] FloatParameter
-    - [x] NoInterpFloatParameter
-    - [x] MinFloatParameter
-    - [x] NoInterpMinFloatParameter
-    - [x] MaxFloatParameter
-    - [x] NoInterpMaxFloatParameter
-    - [x] ClampedFloatParameter
-    - [x] NoInterpClampedFloatParameter
-    - [x] FloatRangeParameter
-    - [x] NoInterpFloatRangeParameter
-    - [x] ColorParameter 
-    - [x] NoInterpColorParameter
-    - [x] Vector2Parameter
-    - [x] NoInterpVector2Parameter
-    - [x] Vector3Parameter
-    - [x] NoInterpVector3Parameter
-    - [x] Vector4Parameter
-    - [x] NoInterpVector4Parameter
-    - [ ] TextureParameter
-    - [ ] NoInterpTextureParameter
-    - [ ] Texture2DParameter
-    - [ ] Texture3DParameter
-    - [ ] RenderTextureParameter
-    - [ ] NoInterpRenderTextureParameter
-    - [ ] CubemapParameter
-    - [ ] NoInterpCubemapParameter
-    - [ ] AnimationCurveParameter
-    - [ ] TextureCurveParameter
-- Universal Render Pipeline
-  - ScriptableRenderData
-  - UniversalAdditionalCameraData
-  - UniversalAdditionalLightData
-  - UniversalRenderPipelineAsset
-  - UniversalRenderPipelineGlobal
+- Will not take any responsibility for any damage that are caused by using this tool.
+- Cannot be used with Script Debugging.
+- Enabling the Player View makes the device __hot__. The ammount of CPU resources being used depends on the screen resolution.  Before playing the PlayerView, it is recommended to change the screen resolution from Screen in Player Inspector.  In Pixel4XL's case, the CPU resources were'nt used at all when the screen resolution was reduced to 604x288.
+- Material is only for checking the content, not writing back the edited content.
+- In order to change the referenced Material's Shader/Texture, you need to Pull them first.
+- Following functions cannot be made in Unity2018:
+  - Replace referenced texture.
+  - Readback feature of PlayerView's Async GPU.
+- If you quit Unity Editor while the device and UnityChoseKun remain connected, crash will occur inside `EditorConnection.instance.DisconnectAll()`
+To prevent that, disconnect from the device by changing the access point of UnityChoseKun to the Editor.
 
-Classの追加方法に関してはこちらをご覧ください：
-[Howto_add_class.md](https://github.com/katsumasa/UnityChoseKun/blob/master/Howto_add_class.md)
+## Setup
 
-## 注意事項・免責事項
+UnityChoseKun uses a separate RemoteConnect package. Please obtain it together with UnityChoseKun. Setup is completed by adding the obtained package to any Unity project.
 
-- 万が一*不測の事態が起きても一切保証は出来ませんのでご注意下さい。*
-- Script Debuggingと併用できません。必ずScript DebuggingをOFFにした上でビルドを行ってください。
-- Texture,Shaderに関しては内容の確認のみで、変更を行うことは出来ません。
-- Materialが参照しているShader/Textureを変更する為にはTexture/ShaderのPullを先に実行する必要があります。
-- Unity2018では以下の機能に対応していません。
-  - Materialが参照しているTextureの差し替え
-
-## セットアップ
-
-UnityChoseKunは別途RemoteConnectパッケージを使用します。UnityChoseKunと合わせて取得して下さい。
-取得したパッケージを任意のUnityプロジェクトへ追加することでセットアップは完了です。
-
-### パッケージの取得方法
-
-UnityChoseKunはGitHubのリポジトリで管理されています。
-セットアップ方法にはいくつかありますが、PackageManagerから取得する方法がもっとも簡単でお勧めです。
-
-#### コンソールからリポジトリを取得する
-
-コンソールからリポジトリを取得する場合、下記のコマンドを実行します。
-
-```:console
+```
 git clone https://github.com/katsumasa/RemoteConnect.git
 git clone https://github.com/katsumasa/UnityChoseKun.git
 ```
 
-#### GitHubから直接取得する
+## How to use
+Place the entire contents of this repository under the Asset folder of the UnityProject.
 
-1. Webブラウザーで[UnityChoseKun](https://github.com/katsumasa/UnityChoseKun)と[RemotoConnect](https://github.com/katsumasa/RemoteConnect)のWebページを開く
-2. 画面右上緑色の`Code`と記述されているプルダウンメニューから`Download ZIP`を選択しZIPファイルをダウンロード
-3. ZIPファイルを解凍しUnityProjectのAssetフォルダ以下へ配置する。
+### Building
 
-#### [お勧め]PackageManagerから取得する
+- Put [UnityChoseKun.prefab](https://github.com/katsumasa/UnityChoseKun/blob/master/Player/Prefabs/UnityChoseKun.prefab) in a Scene and build the app.
+- You must have the check box checked [Development Build and Autoconnect Profiler](https://docs.unity3d.com/2019.4/Documentation/Manual/BuildSettingsStandalone.html) when building.
+- You must specify IL2CPP [Scripting BackEnd](https://docs.unity3d.com/2018.4/Documentation/Manual/windowsstore-scriptingbackends.html).
 
-1. `Window > Package Manager`でPackage Managerを開く
-2. Package Manager左上の`+`のプルダウンメニューから`Add package form git URL...`を選択する
-3. ダイアログへhttps://github.com/katsumasa/RemoteConnect.git を設定し、`Add`ボタンを押す
-4. Package Manager左上の`+`のプルダウンメニューから`Add package form git URL...`を選択する
-5. ダイアログへhttps://github.com/katsumasa/UnityChoseKun.git を設定し、`Add`ボタンを押す
+### Features
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/29646672/183788409-3c1e745a-ac84-49f0-96be-3c4d26ed369f.png">
+#### PlayerViewer
 
-### アプリケーションビルド時の設定
+Viewer that plays the content displayed on the actual device in UnityEditor.
 
-- 調整を行うSceneに[UnityChoseKun.prefab](https://github.com/katsumasa/UnityChoseKun/blob/master/Player/Prefabs/UnityChoseKun.prefab)を配置する。
-- [Development BuildとAutoconnect Profiler](https://docs.unity3d.com/ja/current/Manual/BuildSettingsStandalone.html)にチェックを入れる。
-- URPなどPackageManagerで管理されているClassの調整を行う場合、[Scripting BackEnd](https://docs.unity3d.com/ja/2018.4/Manual/windowsstore-scriptingbackends.html)にはMonoを指定する必要があります。
+<img width="800" alt="PlayerView" src="https://user-images.githubusercontent.com/29646672/137237372-637a0a77-5913-4bfc-835e-03737e0a5013.png">
 
-## 機能紹介
+#### Launch Method
 
-### Player Hierarchy
+From Menu, choose Window->UnityChoseKun->Player View. The PlayerView Window shows up.
 
-EditorのHierarchy同様にGameObjectの親子関係を変更したり、右クリックからのモーダルダイヤログでGameObjectを生成したり、基本的なComponentを追加することが出来ます。
-Window > UTJ > UnityChoseKun > Player Hierarchyより起動します。
+#### How to operate
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/137240924-d089e4b6-9ff7-4bbe-ba31-f19cc7459aca.jpg">
+###### Connect To
 
-#### Reload
+Specify the device you want to connect. The connection mechanism is shared with UnityProfiler, so when you switch to one of them, the other one will switch as well.
 
-実機で実行されているアプリケーションのScene情報を分析し、Hierarchy Treeとして展開します。
-まず初めにReloadを実行し、Sceneの情報を取得することからスタートします。
+<img width="20" alt="PlayIcon" src="https://user-images.githubusercontent.com/29646672/137236748-d4c3ad04-c66c-4e42-81f4-547649720f02.png">　Play Begin/End</br>
+<img width="20" alt="RecIcon" src="https://user-images.githubusercontent.com/29646672/137236785-25596da8-ba35-4cf9-a622-5f2e014baa8a.png">　Record Begin/End</br>
+<img width="20" alt="ScreenShotIcon" src="https://user-images.githubusercontent.com/29646672/137236826-10a97a17-40b3-41c8-affd-d499e64e7475.png">　Save Screenshot</br>
+<img width="20" alt="SaveFolderIcon" src="https://user-images.githubusercontent.com/29646672/137236850-d88a79ec-0e32-46a8-97cd-d736020dd659.png">　Specify the path of the recording results</br>
 
-##### *NOTE*
+###### Enable Async GPU Readback
 
-- GameObjectが数万個存在するような複雑なSceneの場合、Reloadには時間がかかることに注意して下さい。
-- アプリケーションに含まれていないComponentを追加するとエラーとなります。
+If you check this box, you will be able to use [Async GPU Readback](https://docs.unity3d.com/2018.4/Documentation/ScriptReference/Rendering.AsyncGPUReadback.html) to process images. This may reduce the load of the MainTharead.
 
-### Player Inspector
+###### Reflesh Interval
 
-実機で実行しているアプリケーションに対する情報の表示や内容の編集を行う為のWindowです。
-プルダウンメニューから表示する内容を切り替えて使用します。  
-Window > UTJ > UnityChoseKun > Player Inspectorより起動します。
+Specify the process interval images being transfered.
+By giving interval, it may lead to reducing CPU load.
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183793924-afa0646c-5348-4c48-a19a-2934cc9bf5f3.png">
+###### Record Folder
 
-#### Inspector
+Folder where the recorded results will export to.
 
-Player Hierarchyで選択したGameObjectが持つComponentの内容を編集します。
-すべてのComponetの内容を編集出来る訳ではなく、現時点では一部のComponentに限定されています。
-非対応のComponentに関しては、Componentのenableのみ編集可能となっています。
+###### Record Count Max
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183794558-9c8eccb9-9c4c-41e7-902a-71f1c27eb340.png">
+Specify which frame to start record.
+The recording will automatically stop once you have set the frame.
 
-- [Connect To] : 接続先のデバイスを選択します。 Profilerと共有しています。
-- [Add Component] : GameObjectにComponentを追加します。(未実装)
+###### Record Count
 
-#### UnityEngine.Application
+You can seek the recorded result.
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183864921-576f98e7-012f-42a0-8d72-b70e17b9f89c.png">
+<img width="800" alt="UnityChoseKunDemo04" src="https://user-images.githubusercontent.com/29646672/137240645-7e4f1d5d-1214-4247-b846-971e09f852d1.gif">
 
-Application Classのstaticメンバーに関する内容を確認することが出来ます。（編集は出来ません)
-また、Application.Quit()を実行することが可能です。
 
-- [Pull] : Application Classのstaticメンバーを取得します。
-- [Quit] : Application.Quite()を実行します。
+##### Warning
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183794833-2095509b-baf6-4bf8-a4ee-326b01c525e4.png">
+- This is a very high-load process.
+- We  __recommend__ you to adjust the width and height in SetScreen or skip frame and press Play.
 
-### UnityEngine.Android.Permisson
+#### PlayerHierarchy
 
-プラットフォームがAndroidの場合、パーミッションの内容を確認することが出来ます。（編集は出来ません)
+![HierarchyView](https://user-images.githubusercontent.com/29646672/137240924-d089e4b6-9ff7-4bbe-ba31-f19cc7459aca.jpg)
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183795746-54fefac2-22a5-4097-8b4c-435ba7d2839f.png">
+##### Reload
 
-- [Pull] : Android.Permissonのメンバーを取得します。
+Analyzes scene informartion of the application that are running on actual device, then extract is as a Hierachy Tree.
+The first step is to run Reload to gather information of the scene.
+It'll take some time to Reload if the scene holds tens of thousands of GameObjects.
 
-#### UnityEngine.Component
+You could change the parent-child relationship of GameObjectsthe same way as in the Editor's Hierarchy does.
+Also can generate GameObjects or add basic Components with the right-click modal dialog.
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183796160-8bf2b10a-78ba-4b8b-b5cc-21ed4b071bfb.png">
+*NOTE* </br>
+Adding a Component that is not included in the application will cause an error.
 
-Scene上に存在するComponentの種類と数をカウントします。
-本Editor拡張で未対応なComponentは規定Classにカウントします。
+#### Player Inspector
 
-- [Analayze] : Player Hierarchyの情報からScene内のGameObjectに含まれているComponentを種類別にカウントします
+Windows that allows you to edit contens inside the class of UnityEngine that are running on actual device.
 
-#### UnityEngine.QualitySettings
+##### Inspector
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183796486-5b495e59-b575-4240-ba53-044ee76abefb.png">
+Edits the content of selected GameObject's Component in Player Hierarchy.
+Currently, there are few components are editable. But enable can be editable for almost any components.
 
-QualitySettingの内容を確認することができます。（編集は出来ません)
+![InspectorView](https://user-images.githubusercontent.com/29646672/137236992-9d2f6619-a2bd-4d03-b363-ac11fe5ac99c.jpg)
 
-- [Pull] : QualitySettingsのメンバーを取得します。
+- [Connect To] : Select the device you wish to connectc. It's shared with the Profiler
+- [Add Component] : Add Component to GameObject (Currently in progress).
 
-#### UnityEngine.Rendering.GraphicsSettings
+##### Component
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183797004-c39e487e-7192-4fa7-a41b-956e6e1ab2de.png">
+![Inspector_Component](https://user-images.githubusercontent.com/29646672/137237020-38558ca0-e30f-4144-b3f1-fef26a69664f.jpg)
 
-GraphicsSettingsの内容を確認することができます。（編集は出来ません）
+Counts the type and number of components that exists in a scene.
+Components that are not supported by this tool are counted in the Specified Class.
 
-- [Pull] : GraphicsSettingsのメンバーを取得します。
+##### Texture
 
-##### UnityEngine.Rendering.OnDemandRendering
+![Inspector_Texture](https://user-images.githubusercontent.com/29646672/137237036-ab8d310d-830b-415e-9e5a-a106b6a785e7.png)
 
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183797592-040a4d0b-fb93-47ea-982b-8d700e58eb47.png">
+Lists the textures that are referenced in a scene as well as textures that are included in resources runned by an app.
 
-OnDemandRenderingのパラメーターの内容の表示と編集を行うことが可能です。
+- [Pull] : Obtain list of references form GameObjects that are in the scene and textures included in resources.
+  
+※*You need to run the Pull command before changing the Texture that Material is referencing*
 
-- [renderFrameInterval] : 現在のフレームレートの間隔を取得または設定します。Application.targetFrameRateまたはQualitySettings.vSyncCountの値にレンダリングを戻すには、これを0または1に設定します。
+##### Sprite
+
+![image](https://user-images.githubusercontent.com/29646672/124558681-d4f07380-de75-11eb-9db4-8bc46445f2b7.png)
+
+#### Sorting Layer
+
+![image](https://user-images.githubusercontent.com/29646672/124559206-6f50b700-de76-11eb-92b0-2456ce9d6bdc.png)
+
+##### Shader
+
+![Inspector_Shader](https://user-images.githubusercontent.com/29646672/137237071-3a32615f-f566-492a-9c09-9cd56766b8fa.png)
+
+List of Shader that are included in Resources and scene of the app running on actual device.
+
+- [Pull] : Obtain list of references form GameObjects that are in the scene and shaders included in resources.
+
+※*You need to run the Pull command before changing the Sahder that Material is referencing。*
+
+##### Screen
+
+![Inspector_Screen](https://user-images.githubusercontent.com/29646672/137237098-7ca68dd4-42d9-42f2-acd9-887429bfbada.jpg)
+
+Edit the static members of the Screen Class.
+
+- [Pull] : Get the static members of the Screen Class.
+- [Push] : Edited information will show on the actual device.
+
+##### Time
+
+![Inspector_Time](https://user-images.githubusercontent.com/29646672/137237225-6cfadb92-41c3-4a04-84b4-eb2bf6c5940e.jpg)
+
+Edit the static members of the Time Class.
+
+- [Pull] : Get the static members of the Time Class.
+- [Push] : Edited information will show on the actual device.
+
+##### Application
+
+<img width="800" alt="Inspector_Application" src="https://user-images.githubusercontent.com/29646672/137237244-14fe2c38-e81d-4817-8eda-74bf5ab00661.png">
+
+
+Edit the static members of the Application Class.
+Also could run Application.Quit().
+
+- [Pull] : Get the static members of the Application Class.
+- [Push] : Edited information will show on the actual device.
+- [Quit] : Run Application.Quite().
+
+##### Android
+
+<img width="800" alt="Inspector_AndroidView" src="https://user-images.githubusercontent.com/29646672/137237284-3a9aa132-6794-464f-9cc3-b4995065c734.jpg">
+
+
+You can edit the Android device's specific features.
+
+##### QualitySettings
+
+<img width="800" alt="QualitySettingsView" src="https://user-images.githubusercontent.com/29646672/137237300-f2db3084-1dc4-4ba3-bd17-870af7db40f9.jpg">
+
+You can edit QualitySetting.
+
+##### OnDemandRendering
 
 #### ScalableBufferManager
 
-<img width="385" alt="image" src="https://user-images.githubusercontent.com/29646672/183798870-74027094-e9ac-4a57-a213-c23cb9c55deb.png">
+## Thats all! Appreciate your comments and feedback!
 
-ScalableBufferManagerを編集することが出来ます。
-
-- [Pull] : ScalableBufferManagerのパラメーターを取得します。
-
-*NOTE*:この機能を使用する場合、下記の条件を満たしている必要があります。  
-
-- Project Settings -> `Enable Frame Timing Stats`にチェックを入れた状態でアプリケーションをビルドしている。
-- CameraもしくはRenderTextureの[Allow Dynamic Resolution](https://docs.unity3d.com/ja/2018.4/uploads/Main/DynamicResolution.png)が有効になっている。
-- プラットフォーム(及びGraphicドライバ)が下記のいずれかである
-  - Xbox One
-  - PS4
-  - Nintendo Switch
-  - iOS/tvOS (Metal のみ)
-  - Android (Vulkan のみ)
-
-##### UnityEngine.Screen
-
-Screen Classのstaticメンバーに関する内容を編集することが出来ます。
-
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183799340-576bbf10-1d98-4193-8451-d54a7fa1ae9d.png">
-
-- [Pull] : Screen Classのstaticメンバーを取得します。
-- [Push] : 編集した内容を実機上に書き戻します。
-
-##### UnityEngine.Shader
-
-アプリケーションから参照されているShader及びResourcesに含まれるShaderの一覧を表示します。
-
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183800592-298c8320-3ca9-41a1-aa63-b30509db0a3b.png">
-
-- [Pull] : Scene上のGameObjectから参照及びResourcesに含まれるShaderの一覧を取得します。
-
-※*Materialが参照しているShaderを変更する場合は、事前にPullを実行しておく必要があります。*
-
-#### UnityEngine.SortingLayer
-
-実機上の[SortingLayer.layers](https://docs.unity3d.com/ja/current/ScriptReference/SortingLayer-layers.html)を取得します。
-
-<img width="385" alt="image" src="https://user-images.githubusercontent.com/29646672/183801143-980cabdf-785e-416b-b8f8-3d4485c83138.png">
-
-- [Pull] : アプリケーションで使用されているSorting Layerの値を取得します。
-
-※SpriteRendererのSortingLayerを変更する場合、事前にPULLを実行する必要があります。
-
-##### UnityEngine.Sprite
-
-実機で実行されているアプリのScene上から参照されているSprite及びResourcesに含まれるSpriteの一覧を表示します。
-
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183801515-e9023ac3-ffde-497f-9bf0-73abacd63c2b.png">
-
-- [Pull] : アプリケーションで使用されているSpriteの一覧を取得します。
-
-※SpriteRendererのSpriteを変更する場合事前にPullを実行する必要があります。
-
-#### UnityEngine.SystemInfo
-
-[SystemInfo](https://docs.unity3d.com/ja/current/ScriptReference/Device.SystemInfo.html)のメンバーの値を取得します。
-
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183801676-db187c2c-78b9-4dc0-87e8-6f6cda341808.png">
-
-- [Pull] : 実行中のアプリケーションからSystemInfoのメンバーの値を取得します。
-
-##### UnityEngine.Texture
-
-Scene内から参照されているTextureとResourcesに含まれているTextureの一覧表示します。
-
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/29646672/183800913-c036d071-1c75-4d69-929b-3327c1f0b09a.png">
-
-- [Pull] : Scene上のGameObjectから参照及びResourcesに含まれるTextureの一覧を取得します。
-  
-※*Materialが参照しているTextureを変更する場合は、事前にPullを実行しておく必要があります。*
-
-##### UnityEngine.Time
-
-<img width="385" alt="image" src="https://user-images.githubusercontent.com/29646672/183802337-3cd64b21-8b27-4111-b4b8-8b575e550ab5.png">
-
-[Time](https://docs.unity3d.com/ja/current/ScriptReference/Time.html) Classのstaticメンバーに関する内容を編集することが出来ます。
-
-- [Pull] : Time Classのstaticメンバーを取得します。
-- [Push] : 編集した内容を実機上に書き戻します。
-
-※編集可能なメンバーはRead Only以外のメンバーに限定されます。詳しくはスクリプトリファレンスをご確認下さい。
-
-#### UnityEngine.Profiling.Profiler
-
-UnityEngine.Profiling.ProfilerクラスのAPIを使用してMemory関連の情報を取得します。
-
-<img width="400" alt="image" src="https://github.com/user-attachments/assets/cef5ef47-0d27-4f75-a6de-8cbac1d01476">
-
-- [Pull] : 実行中にのアプリケーションからMemory関連の情報を取得します。
-- [Export Objects RuntimeMemory] : `Resources.FindObjectsOfTypeAll(typeof(UnityEngine.Object))` で取得した全てのUnityEngine.Objectに対する`Profiler.GetRuntimeMemorySizeLong`の結果をCSV形式で出力します。
-
-
-## FAQ
-
-### [UnityPlayerSync](https://github.com/katsumasa/UnityPlayerSync)と[UnityChoseKun](https://github.com/katsumasa/UnityChoseKun)の違いを教えて下さい。
-
-UnityChoseKunはアプリケーション上のHierarchyの情報及び必要最低限のComponentの情報を取得し、その情報をアプリケーションへダイレクトに反映し、UnityPlayerSyncはアプリケーションのHierarchyをUnityEditor上にそのまま再現し、変更された内容をアプリケーションに反映します。
-その為、UnityPlayerSyncはUnityChoseKunよりも得られる情報量が多い一方、アプリケーションとUnityEditorの同期にかかる時間はUnityChoseKunの方が短くなっています。
-
-例えば、アプリケーションのパラメーターを調整してパフォーマンスチューニングや見た目の調整を行うような用途であればUnityChoseKunが適しています。
-一方、UnityPlayerSyncは通常のUnityEditorのワークフローと殆ど変わらないGUIで操作することが出来る為、エンジニア以外のクリエーターでも直観的に操作が出来るというメリットがあります。
-
-## その他
-
-- 要望・ご意見・不具合に関しては[Issue](https://github.com/katsumasa/UnityChoseKun/issues)から報告をお願いします。約束は出来ませんが可能な限り対応します。
-- 不具合報告に関してはそれを再現する為のプロジェクトの添付及び再現手順などの記述をお願いします。こちらで再現が取れない場合、対応出来ない場合があります。
+__Katsumasa Kimura: katsumasa@unity3d.com__
