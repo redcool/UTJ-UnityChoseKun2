@@ -1,9 +1,5 @@
- 2 Attributes:
+Use Attributes to mark class Serialized/Deserialized
     MonoBehaviourKunAttribute
-        MonoBehaviour class use,
-
-    MonoBehaviourViewAttribute
-        MonoBehaviourView class use,
     
 1 Write a MonoBehaviour class
 
