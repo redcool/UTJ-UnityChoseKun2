@@ -55,8 +55,6 @@ namespace  Utj.UnityChoseKun.Editor
             {ComponentKun.ComponentKunType.Component,                       typeof(ComponentView)},
 
             {ComponentKun.ComponentKunType.MissingMono,            typeof(MissingMonoView) },
-
-            {ComponentKun. ComponentKunType.TestMono,                 typeof(TestMonoView) },
         };
         
         static ComponentView()

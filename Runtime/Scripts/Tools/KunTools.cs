@@ -33,7 +33,7 @@ namespace PowerUtilities.UTJ
         }
 
         /// <summary>
-        /// Get kun view viewType from kun viewType
+        /// Get kun view viewType from kun viewType,Editor call this get KunViewType
         /// </summary>
         /// <param name="kunType"></param>
         /// <returns></returns>
@@ -61,7 +61,15 @@ namespace PowerUtilities.UTJ
         /// <returns></returns>
         public static Type GetKunType(Component comp)
         {
-            return comp?.GetType().GetCustomAttribute<MonoBehaviourKunAttribute>(true)?.kunType;
+            var kunType = comp?.GetType().GetCustomAttribute<MonoBehaviourKunAttribute>(true)?.kunType;
+            if (kunType != null)
+                return kunType;
+
+            var autoKunAttr = comp?.GetType().GetCustomAttribute<MonoBehaviourAutoKunAttribute>(true);
+            if (autoKunAttr != null)
+                return typeof(MonoBehaviourAutoKun);
+
+            return null;
         }
 
         /// <summary>

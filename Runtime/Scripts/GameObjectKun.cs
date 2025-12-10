@@ -128,6 +128,7 @@ namespace Utj.UnityChoseKun.Engine
                 {
                     componentKuns[i] = (ComponentKun)Activator.CreateInstance(kunType, (object)component);
                     componentKuns[i].instanceID = component.GetInstanceID();
+                    componentKuns[i].name= $"{component.GetType().Name} [{kunType.Name}]";
                     componentKunTypeFullNames[i] = kunType.FullName;
                 }
 

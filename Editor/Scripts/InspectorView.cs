@@ -190,6 +190,8 @@ namespace Utj.UnityChoseKun
                     {
                         var compKun = gameObjectKun.componentKuns[i];
                         var viewType = KunTools.GetKunViewType(compKun.GetType()) ?? ComponentView.GetComponentViewSyetemType(gameObjectKun.componentKunTypes[i]);
+                        if (compKun.GetType() == typeof(MonoBehaviourAutoKun))
+                            viewType = typeof(MonoBehaviourAutoView);
 
                         var componentView = System.Activator.CreateInstance(viewType) as ComponentView;
                         componentView.SetComponentKun(gameObjectKun.componentKuns[i]);
@@ -223,6 +225,7 @@ namespace Utj.UnityChoseKun
                 foreach (var componentView in componentViews)
                 {
                     componentView.OnGUI();
+                    isChange = isChange || componentView.GetComponentKun().dirty;
                 }
                 if (EditorGUI.EndChangeCheck())
                 {

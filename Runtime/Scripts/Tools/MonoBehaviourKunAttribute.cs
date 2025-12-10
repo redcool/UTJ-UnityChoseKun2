@@ -23,4 +23,8 @@ namespace PowerUtilities.UTJ
         }
     }
 
+    [AttributeUsage(AttributeTargets.Class,Inherited = true)]
+    public class MonoBehaviourAutoKunAttribute : Attribute
+    {
+    }
 }

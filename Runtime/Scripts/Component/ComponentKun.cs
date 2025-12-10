@@ -52,7 +52,6 @@ namespace  Utj.UnityChoseKun.Engine
             Canvas,
 
             Volume,
-            TestMono,
 
             UniversalAdditionalCameraData,
             UniversalAdditionalLightData,
