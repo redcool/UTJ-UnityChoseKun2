@@ -990,8 +990,19 @@ namespace Utj.UnityChoseKun.Engine.Rendering.Universal
             if (fieldInfo != null)
             {
                 fieldInfo.SetValue(renderPipelineAsset, m_RequireOpaqueTexture);
-            }                        
-            
+            }
+
+            fieldInfo = t.GetField("m_RendererDataList", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fieldInfo != null)
+            {
+                var scriptableObjects = (ScriptableObject[])(fieldInfo.GetValue(renderPipelineAsset));
+               
+                for (var i = 0; i < scriptableObjects.Length; i++)
+                {
+                    m_RendererDataList[i]?.WriteBack(scriptableObjects[i]);
+                }
+            }
+
             // Quality
             fieldInfo = t.GetField("m_SupportsHDR", BindingFlags.Instance | BindingFlags.NonPublic);
             if (fieldInfo != null)

@@ -87,7 +87,7 @@ namespace Utj.UnityChoseKun
                     bool mShadowFoldout;
                     bool mPostProcessingFoldout;
 
-                    ScriptableRendererDataView rendererDataView;
+                    ScriptableRendererDataView[] rendererDataViews;
 
                     public bool DrawContent(UniversalRenderPipelineAssetKun universalRenderPipelineAssetKun)
                     {
@@ -141,12 +141,16 @@ namespace Utj.UnityChoseKun
                                 rendererData.isFolded = EditorGUITools.Foldout(rendererData.isFolded, label);
                                 if(rendererData.isFolded)
                                 {
-                                    if (rendererDataView == null)
+                                    if (rendererDataViews == null || rendererDataViews.Length != universalRenderPipelineAssetKun.rendererDataList.Length)
                                     {
-                                        rendererDataView = new ScriptableRendererDataView();
+                                        rendererDataViews = new ScriptableRendererDataView[universalRenderPipelineAssetKun.rendererDataList.Length];
+                                    }
+                                    if( rendererDataViews[i] == null)
+                                    {
+                                        rendererDataViews[i] = new ScriptableRendererDataView();
                                     }
                                     EditorGUI.indentLevel++;
-                                    rendererDataView.Draw(rendererData);
+                                    rendererDataViews[i].Draw(rendererData);
                                     EditorGUI.indentLevel--;
                                 }
                             }

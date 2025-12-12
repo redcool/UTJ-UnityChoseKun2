@@ -30,7 +30,6 @@ namespace Utj.UnityChoseKun.Engine.Rendering.Universal
         public ScriptableRendererDataKun(ScriptableObject scriptableObject) : base(scriptableObject)
         {
             var data = scriptableObject as UniversalRendererData;
-            Debug.Log(scriptableObject);
             if (!data)
                 return;
             opaqueLayers = data.opaqueLayerMask;
@@ -68,27 +67,29 @@ namespace Utj.UnityChoseKun.Engine.Rendering.Universal
                 featuresJson.Add((featureFullName, featureJson));
             }
             opaqueLayers = binaryReader.ReadInt32();
+
         }
         public override bool WriteBack(UnityEngine.Object obj)
         {
-            Debug.Log($"=========================={obj}");
-            if (dirty)
-            {
-                var data = obj as UniversalRendererData;
-                if (!data)
-                    return false;
-                data.opaqueLayerMask = opaqueLayers;
-                //var features = data.rendererFeatures;
+            var data = obj as UniversalRendererData;
+            if (!data)
+                return false;
 
-                //JsonUtility.FromJsonOverwrite(objJson, data);
-                //data.rendererFeatures.Clear();
-                //foreach(var feature in features)
-                //{
-                //    data.rendererFeatures.Add(feature);
-                //}
-                return true;
+            var features = data.rendererFeatures;
+            Debug.Log(string.Join(" , ", features));
+
+            JsonUtility.FromJsonOverwrite(objJson, data);
+            
+            Debug.Log($"WriteBack =========================={obj} {(int)data.opaqueLayerMask}");
+            for (int i = 0; i < data.rendererFeatures.Count; i++)
+            {
+                data.rendererFeatures[i] = features[i];
+
+                Debug.Log($"------ {data.rendererFeatures[i]}");
             }
-            return false;
+
+            data.SetDirty();
+            return true;
         }
 
 

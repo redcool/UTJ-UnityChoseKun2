@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEditor;
@@ -10,6 +11,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using Utj.UnityChoseKun.Editor;
 using Utj.UnityChoseKun.Engine.Rendering.Universal;
+using Object = UnityEngine.Object;
 
 namespace UTJ.UnityChoseKun
 {
@@ -18,37 +20,46 @@ namespace UTJ.UnityChoseKun
         UniversalRendererData soObj;
 
         UniversalRendererDataEditor soObjEditor;
+        string lastHash = "";
 
         public override bool OnGUI()
         {
             return base.OnGUI();
         }
 
-        public void Draw(ScriptableRendererDataKun data)
+        public bool Draw(ScriptableRendererDataKun dataKun)
         {
             if (!soObj)
             {
                 soObj = ScriptableObject.CreateInstance<UniversalRendererData>();
-                WriteBackRendererData(data, soObj);
+                SetupData(dataKun, soObj);
 
                 soObjEditor = (UniversalRendererDataEditor)Editor.CreateEditor(soObj);
+                lastHash = MD5Tools.GetMD5HashString(null,soObj);
             }
             soObjEditor.OnInspectorGUI();
+            
+            
+            var newHash = MD5Tools.GetMD5HashString(null,soObj);
+            var isChanged = (newHash != lastHash);
+            if (isChanged)
+            {
+                WriteBack(soObj, dataKun);
+                lastHash = newHash;
+            }
+            return isChanged;
         }
 
-        public void WriteBackRendererData(ScriptableRendererDataKun data, ScriptableRendererData soObj)
+        public void SetupData(ScriptableRendererDataKun dataKun, ScriptableRendererData soObj)
         {
-            // write data except features
-            JsonUtility.FromJsonOverwrite(data.objJson, soObj);
-
-            // write features
+            JsonUtility.FromJsonOverwrite(dataKun.objJson, soObj);
             soObj.rendererFeatures.Clear();
-            foreach (var featureJson in data.featuresJson)
-            {
-                var feature = (ScriptableRendererFeature)ScriptableObject.CreateInstance(featureJson.typeFullName);
-                JsonUtility.FromJsonOverwrite(featureJson.json, feature);
-                soObj.rendererFeatures.Add(feature);
-            }
+        }
+
+        public void WriteBack(UniversalRendererData soObj,ScriptableRendererDataKun dataKun)
+        {
+            dataKun.objJson = JsonUtility.ToJson(soObj);
+            //dataKun.opaqueLayers = soObj.opaqueLayerMask;
         }
     }
 }
