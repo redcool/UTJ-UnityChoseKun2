@@ -120,6 +120,7 @@ namespace Utj.UnityChoseKun
                         mRenderingFoldout = EditorGUITools.Foldout(mRenderingFoldout, Styles.Rendering);
                         if (mRenderingFoldout)
                         {
+                            var isDirty = false;
                             EditorGUI.BeginChangeCheck();
                             EditorGUI.indentLevel++;
 
@@ -150,7 +151,7 @@ namespace Utj.UnityChoseKun
                                         rendererDataViews[i] = new ScriptableRendererDataView();
                                     }
                                     EditorGUI.indentLevel++;
-                                    rendererDataViews[i].Draw(rendererData);
+                                    isDirty = isDirty || rendererDataViews[i].Draw(rendererData);
                                     EditorGUI.indentLevel--;
                                 }
                             }
@@ -169,7 +170,7 @@ namespace Utj.UnityChoseKun
                             EditorGUILayout.Toggle(Styles.TerrainHoles, universalRenderPipelineAssetKun.supportsTerrainHoles);
 
                             EditorGUI.indentLevel--;
-                            return EditorGUI.EndChangeCheck();
+                            return EditorGUI.EndChangeCheck() || isDirty;
                         }
                         return false;
                     }
