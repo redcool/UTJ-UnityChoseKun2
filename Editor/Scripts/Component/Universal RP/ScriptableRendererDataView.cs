@@ -59,7 +59,7 @@ namespace UTJ.UnityChoseKun
         public void WriteBack(UniversalRendererData soObj,ScriptableRendererDataKun dataKun)
         {
             dataKun.objJson = JsonUtility.ToJson(soObj);
-            //dataKun.opaqueLayers = soObj.opaqueLayerMask;
+            dataKun.UpdateKunData(soObj);
         }
     }
 }
